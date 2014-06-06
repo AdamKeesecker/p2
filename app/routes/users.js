@@ -17,7 +17,14 @@ exports.login = (req, res)=>{
 };
 
 exports.loadDashboard = (req, res)=>{
-	User.findById(req.params.id, user=>{
+	User.findById(req.session.userId, user=>{
 		res.render('users/dashboard', {title: user.name, user:user});
 	});	
+};
+
+exports.lookup = (req, res, next)=>{
+	User.findById(req.session.userId, user=>{
+		res.locals.user = user;
+		next();
+	});
 };
