@@ -12,7 +12,7 @@ exports.register = (req, res)=>{
 exports.login = (req, res)=>{
 	User.login(req.body, usr=>{
 		req.session.userId = usr._id;
-		res.redirect(`/users/dashboard/${user._id.toString()}`);
+		res.redirect(`/users/dashboard/${usr._id.toString()}`);
 	});	
 };
 
