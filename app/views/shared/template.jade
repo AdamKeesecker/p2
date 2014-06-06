@@ -2,93 +2,99 @@ doctype html
 html
   head
     meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+
     title= title
+
     link(href='/less/app.css', rel='stylesheet')
     link(href='/css/normalize.css', rel='stylesheet')
     link(href='/css/buttons.css', rel='stylesheet')
     link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css')
+    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css')
+
 
   body
-    .container
+  .container
     .row
-        .col-md-12
-          nav.navbar.navbar-inverse(role='navigation')
-            //
-               Brand and toggle get grouped for better mobile display
-            .navbar-header
-              button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
-                span.sr-only Toggle navigation
-                span.icon-bar
-                span.icon-bar
-                span.icon-bar
-              a.navbar-brand P2
-            //
-               Collect the nav links, forms, and other content for toggling
-            #bs-example-navbar-collapse-1.collapse.navbar-collapse
-              ul.nav.navbar-nav
-                li
-                  a(class='glyphicon glyphicon-home', href='/') Home
-                li
-                  a(class='glyphicon glyphicon-user', href='/users/dashboard') Dashboard
-                li
-                  a(class='glyphicon glyphicon-search', href='/courses/index') Search
+      .col-md-12
+        nav.navbar.navbar-inverse(role='navigation')
+          //
+             Brand and toggle get grouped for better mobile display
+          .navbar-header
+            button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+              span.sr-only Toggle navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            a.navbar-brand P2
+          //
+             Collect the nav links, forms, and other content for toggling
+          #bs-example-navbar-collapse-1.collapse.navbar-collapse
+            ul.nav.navbar-nav
+              li
+                a(class='glyphicon glyphicon-home', href='/') Home
+              li
+                a(class='glyphicon glyphicon-user', href='/users/dashboard') Dashboard
+              li
+                a(class='glyphicon glyphicon-search', href='/users') Search
 
 
-              ul.nav.navbar-nav.navbar-right
-                li.dropdown
-                    a.dropdown-toggle(href='http://www.jquery2dotnet.com', data-toggle='dropdown')
-                      | Register
-                      b.caret
-                    ul.dropdown-menu(style='padding: 15px; min-width: 250px;')
-                      li
-                        .row
-                          .col-md-12
-                            form#login-nav.form(role='form', method='post', action='/register', accept-charset='UTF-8')
-                              .form-group
-                                label.sr-only(for='exampleInputEmail2') Email address
-                                input#exampleInputEmail2.form-control(type='email', name='email' placeholder='Email address', required='required')
-                              .form-group
-                                label.sr-only(for='exampleInputPassword2') Password
-                                input#exampleInputPassword2.form-control(type='password', name='password' placeholder='Password', required='required')
-                              .form-group
-                                button.btn.btn-primary.btn-block(type='submit') Register
-
-
-
-                li.dropdown
-                  a.dropdown-toggle(href='http://www.jquery2dotnet.com', data-toggle='dropdown')
-                    | Sign in
+            ul.nav.navbar-nav.navbar-right
+              li.dropdown
+                  a.dropdown-toggle(href='#', data-toggle='dropdown')
+                    | Register
                     b.caret
                   ul.dropdown-menu(style='padding: 15px; min-width: 250px;')
                     li
                       .row
                         .col-md-12
-                          form#login-nav.form(role='form', method='post', action='/login', accept-charset='UTF-8')
+                          form#login-nav.form(role='form', method='post', action='/register', accept-charset='UTF-8')
                             .form-group
                               label.sr-only(for='exampleInputEmail2') Email address
                               input#exampleInputEmail2.form-control(type='email', name='email' placeholder='Email address', required='required')
                             .form-group
                               label.sr-only(for='exampleInputPassword2') Password
                               input#exampleInputPassword2.form-control(type='password', name='password' placeholder='Password', required='required')
-                            .checkbox
-                              label
-                                input(type='checkbox')
-                                | Remember me
                             .form-group
-                              button.btn.btn-success.btn-block(type='submit') Sign in
-                //indent
-                - console.log(isLogin)
-                if(isLogin !== null)
+                              button.btn.btn-primary.btn-block(type='submit') Register
+
+
+
+              li.dropdown
+                a.dropdown-toggle(href='#', data-toggle='dropdown')
+                  | Sign in
+                  b.caret
+                ul.dropdown-menu(style='padding: 15px; min-width: 250px;')
                   li
-                    a(href='/logout') Logout
-            //
-               /.navbar-collapse
+                    .row
+                      .col-md-12
+                        form#login-nav.form(role='form', method='post', action='/login', accept-charset='UTF-8')
+                          .form-group
+                            label.sr-only(for='exampleInputEmail2') Email address
+                            input#exampleInputEmail2.form-control(type='email', name='email' placeholder='Email address', required='required')
+                          .form-group
+                            label.sr-only(for='exampleInputPassword2') Password
+                            input#exampleInputPassword2.form-control(type='password', name='password' placeholder='Password', required='required')
+                          .checkbox
+                            label
+                              input(type='checkbox')
+                              | Remember me
+                          .form-group
+                            button.btn.btn-success.btn-block(type='submit') Sign in
+              //indent
+              - console.log(isLogin)
+              if(isLogin !== null)
+                li
+                  a(href='/logout') Logout
+          //
+             /.navbar-collapse
 
 
 
 
 
-  block content
+    block content
 
     script(src='/js/vendor/jquery-2.1.1.js')
     script(src='//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js')
@@ -100,4 +106,4 @@ html
     script(src='/js/es6/compiled/main.js')
     script(src='/js/es6/compiled/sockets.js')
 
-  block scripts
+    block scripts
