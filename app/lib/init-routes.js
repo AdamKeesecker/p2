@@ -21,6 +21,7 @@ function load(app, fn){
   app.get('/', dbg, home.index);
   app.post('/register', dbg, users.register);
   app.post('/login', dbg, users.login);
+  app.get('/users/dashboard/:id', dbg, users.loadDashboard);
 
 
 
