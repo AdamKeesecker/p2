@@ -15,8 +15,15 @@ module.exports = (req, res, next)=>{
 
 function load(app, fn){
   var home = traceur.require(__dirname + '/../routes/home.js');
+  var users = traceur.require(__dirname + '/../routes/users.js');
 
   app.get('/', dbg, home.index);
+  app.get('/users/dashboard', dbg, users.dashboard);
+
+
+
+
+
   console.log('Routes Loaded');
   fn();
 }
