@@ -18,9 +18,8 @@ function load(app, fn){
   var users = traceur.require(__dirname + '/../routes/users.js');
 
   app.get('/', dbg, home.index);
-  app.get('/users/dashboard', dbg, users.dashboard);
-
-
+  app.post('/register', dbg, users.register);
+  app.post('/login', dbg, users.login);
 
 
 
