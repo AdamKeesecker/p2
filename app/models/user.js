@@ -22,8 +22,8 @@ class User{
         user.location = obj.location;
         user.orientation = obj.orientation;
         user.isOnline = true;
-        user.relationshipStatus;
-        user.coverPic;
+        user.relationshipStatus = 'undefined';
+        user.coverPic = 'default.jpg';
         user.games = [];
 
         users.save(user, ()=>fn(user));
