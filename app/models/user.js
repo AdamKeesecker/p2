@@ -18,9 +18,13 @@ class User{
         user.name = obj.name;
         user.gender = obj.gender;
         user.age = obj.age;
+        user.genre = [];
         user.location = obj.location;
         user.orientation = obj.orientation;
         user.isOnline = true;
+        user.relationshipStatus;
+        user.coverPic;
+        user.games = [];
 
         users.save(user, ()=>fn(user));
       }
