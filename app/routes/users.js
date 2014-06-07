@@ -5,14 +5,14 @@ var User = traceur.require(__dirname + '/../models/user.js');
 exports.register = (req, res)=>{
 	User.create(req.body, user=>{
 		req.session.userId = user._id;
-		res.redirect(`/users/dashboard/${user._id.toString()}`);
+		res.redirect(`/users/dashboard`);
 	});
 };
 
 exports.login = (req, res)=>{
 	User.login(req.body, usr=>{
 		req.session.userId = usr._id;
-		res.redirect(`/users/dashboard/${usr._id.toString()}`);
+		res.redirect(`/users/dashboard`);
 	});	
 };
 
