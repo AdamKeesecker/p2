@@ -1,7 +1,8 @@
 each game in games
-  .div(data-id= game.id)
-    if(game.image)
-      .picture(data-url= game.image.thumb_url)
-        img(src= game.image.thumb_url)
-    .name= game.name
-    button.addGame Add Game to favorites
+  .gameContainer.well
+    .div(data-id= game.id)
+      if(game.image)
+        .picture(data-url= game.image.thumb_url)
+          img.image(src= game.image.thumb_url)
+      .name= game.name
+      button.addGame Add Game to favorites
