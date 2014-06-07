@@ -1,7 +1,7 @@
 var bcrypt = require('bcrypt');
 var users = global.nss.db.collection('users');
 // var Mongo = require('mongodb');
-//var _ = require('lodash');
+var _ = require('lodash');
 var traceur = require('traceur');
 var Base = traceur.require(__dirname + '/base.js');
 //{"name":"IloveForking","email":"phil@aol.com", "password":"7890", "gender":"male", "age":"24", "location":"02134", "orientation":"female"}
@@ -60,6 +60,18 @@ class User{
     else{
       return 'straight';
     }
+  }
+
+  deleteGame(gameId){
+    //this.games 
+
+    var filteredGames = _.filter(this.games, game=>{
+      if(game.id !== gameId){
+        return game;
+      }
+    });
+    this.games = filteredGames;
+    users.save(this, ()=>{});
   }
 
   saveGame(obj){
