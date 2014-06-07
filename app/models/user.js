@@ -1,6 +1,6 @@
 var bcrypt = require('bcrypt');
 var users = global.nss.db.collection('users');
-var Mongo = require('mongodb');
+// var Mongo = require('mongodb');
 //var _ = require('lodash');
 var traceur = require('traceur');
 var Base = traceur.require(__dirname + '/base.js');
@@ -23,7 +23,6 @@ class User{
       }else{
         var user = new User();
         user.email = obj.email;
-        user._id = Mongo.ObjectID(obj._id);
         user.password = bcrypt.hashSync(obj.password, 8);
         user.name = obj.name;
         user.gender = obj.gender;
