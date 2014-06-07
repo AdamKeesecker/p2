@@ -41,9 +41,16 @@ exports.findGame = (req, res)=>{
 	var game = req.params.game;
 	request('http://www.giantbomb.com/api/search/?api_key=29aa8adf95f48bba35259a53d0bf5516c3b6e529&format=json&query="'+game+'"&resources=game', function (error, response, body) {
 	  if (!error && response.statusCode === 200) {
-	  	res.send({body:body});
-	    //console.log(body); // Print the google web page.
+	  	body = JSON.parse(body);
+	  	res.render('users/gameInfo', {games: body.results});
 	  }
+	});
+};
+
+exports.saveGame = (req, res)=>{
+	User.findById(req.session.userId, user=>{
+		user.saveGame(req.body);
+		res.render('users/currentFavorites', {user: user});
 	});
 };
 

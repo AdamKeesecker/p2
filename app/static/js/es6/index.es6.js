@@ -7,14 +7,27 @@
 
 	function init(){
 		$('#submitSearch').click(findGame);
+		$('#results').on('click', '.addGame', saveGame);
 	}
+
 	function findGame(){
 		var game = $('#search').val();
-		$('#search').val();
+		$('#search').val('');
 		ajax(`/users/find-game/${game}`, 'get', null, html=>{
-			console.log(html);
-		},'json');
+			$('#results').empty().append(html);
+		});
 	}
+
+	function saveGame(){
+		var gameId = $(this).closest('.div').attr('data-id');
+		var imgUrl = $(this).prev().prev().attr('data-url');
+		var gameName = $(this).prev().text();
+		ajax('/users/saveGame', 'put', {id: gameId, url: imgUrl, title: gameName}, response=>{
+			$('#results').empty();
+			$('#currentFavorites').empty().append(response);
+		});
+	}
+
 
 })();
 

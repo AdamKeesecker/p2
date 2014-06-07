@@ -6,15 +6,6 @@ var traceur = require('traceur');
 var Base = traceur.require(__dirname + '/base.js');
 //{"name":"IloveForking","email":"phil@aol.com", "password":"7890", "gender":"male", "age":"24", "location":"02134", "orientation":"female"}
 class User{
-  get getOrientation(){
-    if(this.gender === this.orientation){
-      return 'gay';
-    }
-    if(this.orientation === 'both'){
-      return 'bi';
-    }
-    return 'straight';
-  }
 
   static create(obj, fn){
     users.findOne({email:obj.email}, (e,u)=>{
@@ -57,6 +48,23 @@ class User{
 
   static findById(id, func){
     Base.findById(id, users, User, func);
+  }
+
+  get getOrientation(){
+    if(this.gender === this.orientation){
+      return 'gay';
+    }
+    if(this.orientation === 'both'){
+      return 'bi';
+    }
+    else{
+      return 'straight';
+    }
+  }
+
+  saveGame(obj){
+    this.games.push(obj);
+    users.save(this, ()=>{});
   }
 }
 module.exports = User;
