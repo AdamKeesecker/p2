@@ -5,40 +5,52 @@ extends ../shared/template
 block content
 
   #carousel-example-generic.carousel.slide(data-ride='carousel')
-    //Indicators
-      ol.carousel-indicators
-        li.active(data-target='#carousel-example-generic', data-slide-to='0')
-        li(data-target='#carousel-example-generic', data-slide-to='1')
-        li(data-target='#carousel-example-generic', data-slide-to='2')
-      //
-         Wrapper for slides
-      .carousel-inner
-        .item.active
-          img(src='...', alt='...')
-          .carousel-caption
-            | ...
-        | ...
-      //
-         Controls
-      a.left.carousel-control(href='#carousel-example-generic', data-slide='prev')
-        span.glyphicon.glyphicon-chevron-left
-      a.right.carousel-control(href='#carousel-example-generic', data-slide='next')
-        span.glyphicon.glyphicon-chevron-right
+
+    ol.carousel-indicators
+      li.active(data-target='#carousel-example-generic', data-slide-to='0')
+      li(data-target='#carousel-example-generic', data-slide-to='1')
+      li(data-target='#carousel-example-generic', data-slide-to='2')
+
+    .carousel-inner
+      .item.active
+        img(src='/img/default.jpg', alt='/img/default.jpg')
+        .carousel-caption
+          | specific caption1 
+      .item
+        img(src='/img/default2.jpeg', alt='/img/default.jpg')
+        .carousel-caption
+          | specific caption2
+      .item
+        img(src='/img/default3.jpeg', alt='/img/default.jpg')
+        .carousel-caption
+          | specific caption3
+      | Under carousel
+
+    a.left.carousel-control(href='#carousel-example-generic', data-slide='prev')
+      span.glyphicon.glyphicon-chevron-left
+    a.right.carousel-control(href='#carousel-example-generic', data-slide='next')
+      span.glyphicon.glyphicon-chevron-right
 
 
-    Button trigger modal 
-    button.btn.btn-primary.btn-lg(data-toggle='modal', data-target='#myModal')
-      | Launch demo modal
-    //
-       Modal
-    #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
-      .modal-dialog
-        .modal-content
-          .modal-header
-            button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-            h4#myModalLabel.modal-title Modal title
-          .modal-body
-            | ...
-          .modal-footer
-            button.btn.btn-default(type='button', data-dismiss='modal') Close
-            button.btn.btn-primary(type='button') Save changes
+
+
+
+
+
+    // INCORRECT PAGE FOR THIS MODAL
+
+  button.btn.btn-primary.btn-sm(data-toggle='modal', data-target='#myModal')
+    | Modal
+  //
+     Modal
+  #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+          h4#myModalLabel.modal-title Modal title
+        .modal-body
+          | ...
+        .modal-footer
+          button.btn.btn-default(type='button', data-dismiss='modal') Close
+          button.btn.btn-primary(type='button') Save changes
