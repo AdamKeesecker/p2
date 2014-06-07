@@ -34,3 +34,9 @@ exports.lookup = (req, res, next)=>{
 		next();
 	});
 };
+
+exports.profile = (req, res)=>{
+	User.findById(req.params.userId, user=>{
+		res.render('/users/profile', {user: user});
+	});
+};
