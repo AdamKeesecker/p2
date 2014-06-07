@@ -48,7 +48,6 @@ exports.findGame = (req, res)=>{
 	});
 };
 
-
 exports.browse = (req, res)=>{
 	res.render('users/browse', {title: 'Find your p2!'});
 };
@@ -74,7 +73,6 @@ exports.logout = (req, res)=>
 	req.session.userId = null;
 	res.redirect('/');
 };
-
 
 exports.editInfo = (req, res)=>
 {

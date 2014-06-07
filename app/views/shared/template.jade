@@ -45,7 +45,7 @@ html
                     a.glyphicon.glyphicon-list(href='/users/dashboard') Dashboard
                 if(locals.user)
                   li
-                    a.glyphicon.glyphicon-user(href='/users/profile') Profile
+                    a.glyphicon.glyphicon-user(href='/users/#{locals.user._id}') Profile
                 li
                   a.glyphicon.glyphicon-search(href='/users/browse') Browse
 

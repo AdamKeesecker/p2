@@ -46,7 +46,7 @@ class User{
 
   isOwner(ownerId)
   {
-    return ownerId === this._id.toString() || ownerId === 'profile';
+    return ownerId === this._id.toString();
   }
 
   get orientation(){
