@@ -24,14 +24,14 @@ class User{
         var user = new User();
         user.email = obj.email;
         user.password = bcrypt.hashSync(obj.password, 8);
-        user.name = obj.name;
+        user.username = obj.username;
         user.gender = obj.gender;
         user.age = obj.age;
         user.genre = [];
         user.location = obj.location;
         user.orientation = obj.orientation;
         user.isOnline = true;
-        user.relationshipStatus = 'undefined';
+        user.relationshipStatus = undefined;
         user.coverPic = 'default.jpg';
         user.games = [];
 

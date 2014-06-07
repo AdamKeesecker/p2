@@ -1,0 +1,17 @@
+#about.well
+  h6 about
+  if(!isOwner)
+    button.btn.btn-primary.btn-sm(data-toggle='modal', data-target='#aboutModal')
+      | Edit
+
+#aboutModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+        h4#myModalLabel.modal-title Title variable
+      .modal-body
+        | variable content3
+      .modal-footer
+        button.btn.btn-default(type='button', data-dismiss='modal') Close
+        button.btn.btn-primary(type='button') Save changes
