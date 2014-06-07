@@ -2,19 +2,19 @@ extends ../shared/template
 
 block content
 
-  h1 Browse Locals in Your Area!!!!!!
-  select#orientation.selectpicker
+  h1 Browse Locals in Your Area!
+  select#orientation.form-control
     option(name='straight' value='straight') Straight
     option(name='gay', value='gay') Gay
     option(name='bi', value='bi') Bi
 
-  select#sex.selectpicker
+  select#sex.form-control
     option(name='male' value='male') Male
     option(name='female', value='female') Female
 
   //- select#games.selectpicker
 
-  select#distance.selectpicker
+  select#distance.form-control
     option(name='25' value='25') 25 Miles
     option(name='50' value='50') 50 Miles
     option(name='100' value='100') 100 Miles
