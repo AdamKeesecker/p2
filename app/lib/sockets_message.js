@@ -6,15 +6,14 @@ var User;
 
 exports.connection = function(socket)
 {
-  Message = traceur.require(__dirname + '/../models/message.js');
-  User = traceur.require(__dirname + '/../models/users.js');
-
   socket.on('send', send);
 };
 
 function send(data)
 {
   var socket = this;
+  Message = traceur.require(__dirname + '/../models/message.js');
+  User = traceur.require(__dirname + '/../models/user.js');
 
   User.findById(data.senderId, sender=>
   {
@@ -32,19 +31,19 @@ function send(data)
             }
             else
             {
-              socket.send('MSGERR', 'Message could not be processed by our server');
+              socket.send('Message could not be processed by our server');
             }
           });
         }
         else
         {
-          socket.send('MSGERR', 'Message recipient could not be verified');
+          socket.send('Message recipient could not be verified');
         }
       });
     }
     else
     {
-      socket.send('MSGERR', 'Message sender could not be verified');
+      socket.send('Message sender could not be verified');
     }
   });
 
