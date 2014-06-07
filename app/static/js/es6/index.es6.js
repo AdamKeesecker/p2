@@ -8,6 +8,8 @@
 	function init(){
 		$('#submitSearch').click(findGame);
 		$('#results').on('click', '.addGame', saveGame);
+		$('#currentFavorites').on('click', '.deleteGame', deleteGame);
+
 	}
 
 	function findGame(){
@@ -28,6 +30,13 @@
 		});
 	}
 
+	function deleteGame(event){
+		var gameId = $(this).closest('.div').attr('data-id');
+		ajax(`/users/deleteGame/${gameId}`, 'delete', null, response=>{
+			$('#currentFavorites').empty().append(response);
+		});
+		event.preventDefault();
+	}
 
 })();
 

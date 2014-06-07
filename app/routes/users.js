@@ -48,8 +48,18 @@ exports.findGame = (req, res)=>{
 	});
 };
 
+
 exports.browse = (req, res)=>{
 	res.render('users/browse', {title: 'Find your p2!'});
+};
+
+exports.deleteGame = (req, res)=>{
+	User.findById(req.session.userId, user=>{
+		user.deleteGame(req.params.gameId);
+			User.findById(req.session.userId, usr=>{
+				res.render('users/currentFavorites', {user: usr});
+			});
+	});
 };
 
 exports.saveGame = (req, res)=>{

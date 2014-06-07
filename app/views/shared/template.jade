@@ -98,14 +98,15 @@ html
                                   input#location.form-control(type='text', name='location', placeholder='City', required='required')
                                 .form-group
                                   label(for='gender') Gender
-                                  input#gender(type='radio', name='gender', value='male')
-                                  label(for='male') Male
-                                  input#gender(type='radio', name='gender', value='female')
-                                  label(for='female') Female
+                                  .form-control
+                                    input#gender1(type='radio', name='gender', value='male')
+                                    label#male(for='male') Male
+                                    input#gender2(type='radio', name='gender', value='female')
+                                    label#female(for='female') Female
 
                                 .form-group
                                   label(for='orientation', name='orientation') Seeking
-                                  select.selectpicker
+                                  select.form-control
                                     option(name='male' value='male') Male
                                     option(name='female', value='female') Female
                                     option(name='both', value='both') Both
