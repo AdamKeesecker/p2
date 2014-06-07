@@ -1,4 +1,5 @@
 'use strict';
+
 var traceur = require('traceur');
 var User = traceur.require(__dirname + '/../models/user.js');
 var request = require('request');
@@ -45,6 +46,10 @@ exports.findGame = (req, res)=>{
 	  	res.render('users/gameInfo', {games: body.results});
 	  }
 	});
+};
+
+exports.browse = (req, res)=>{
+	res.render('users/browse', {title: 'Find your p2!'});
 };
 
 exports.saveGame = (req, res)=>{

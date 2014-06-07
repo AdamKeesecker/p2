@@ -26,10 +26,12 @@ function load(app, fn){
   app.post('/login', dbg, users.login);
   app.get('/users/dashboard', dbg, users.loadDashboard);
   app.get('/users', dbg, users.index);
-  app.get('/users/:userId', dbg, users.profile);
+  app.get('/users/browse', dbg, users.browse);
+
   app.get('/users/find-game/:game', dbg, users.findGame);
   app.get('/logout', dbg, users.logout);
   app.put('/users/saveGame', dbg, users.saveGame);
+  app.get('/users/:userId', dbg, users.profile);
 
 
   console.log('Routes Loaded');
