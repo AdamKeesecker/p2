@@ -1,4 +1,5 @@
 //var bcrypt = require('bcrypt');
+
 var messages = global.nss.db.collection('messages');
 var Mongo = require('mongodb');
 //var _ = require('lodash');

@@ -13,11 +13,11 @@ html
     link(href='/css/bootstrap-select.css', rel='stylesheet')
     link(href='/css/bootstrap.css', rel='stylesheet')
     link(href='/css/bootstrap-theme.css', rel='stylesheet')
-    link(href='/fonts/glyphicons-halflings-regular.svg', rel='stylesheet', type='text/css')
-    link(href='/fonts/glyphicons-halflings-regular.woff', rel='stylesheet', type='text/css')
-    link(href='/fonts/glyphicons-halflings-regular.ttf' rel='stylesheet', type='text/css')
+    link(href='/fonts/glyphicons-halflings-regular.svg', rel='font', type='text/css')
+    link(href='/fonts/glyphicons-halflings-regular.woff', rel='font', type='text/css')
+    link(href='/fonts/glyphicons-halflings-regular.ttf' rel='font', type='text/css')
     link(href='/fonts/fontawesome-webfont.tff', rel='font', type='text/css')
-    link(href='/fonts/fontawesome-webfont.woff', rel='stylesheet', type='text/css')
+    link(href='/fonts/fontawesome-webfont.woff', rel='font', type='text/css')
 
 
   body
@@ -40,19 +40,40 @@ html
               ul.nav.navbar-nav
                 li
                   a.glyphicon.glyphicon-home(href='/') Home
-                li
-                  a.glyphicon.glyphicon-list(href='/users/dashboard') Dashboard
-                - if('#{locals.userId}')
+                if(locals.user)
+                  li
+                    a.glyphicon.glyphicon-list(href='/users/dashboard') Dashboard
+                if(locals.user)
                   li
                     a.glyphicon.glyphicon-user(href='/users/profile') Profile
                 li
-                  a.glyphicon.glyphicon-search(href='/users') Search
+                  a.glyphicon.glyphicon-search(href='/users/browse') Browse
 
 
               ul.nav.navbar-nav.navbar-right
-                if(!isOnline)
+                if(locals.user)
                   li.dropdown
-                      a.dropdown-toggle(href='#', data-toggle='dropdown')
+                    a.glyphicon.glyphicon-send.dropdown-toggle(href='#', data-toggle='dropdown')
+                      | Messages
+                      b.caret
+                    ul.dropdown-menu(style='padding: 15px; min-width: 250px;')
+                      li
+                        .row
+                          .col-md-12
+                            .message-from(data-toggle='modal', data-target='#fakeModal')
+                              img.from.from-pic(src='/img/default.jpg')
+                              .message-body
+                                | So I like think you're pretty cool and stuff...
+                            hr
+                            .message-from(data-toggle='modal', data-target='#fakeModal')
+                              img.from.from-pic(src='/img/default.jpg')
+                              .message-body
+                                | So I like think you're pretty cool and stuff...
+
+
+                if(!locals.user)
+                  li.dropdown
+                      a.glyphicon.glyphicon-pencil.dropdown-toggle(href='#', data-toggle='dropdown')
                         | Register
                         b.caret
                       ul.dropdown-menu(style='padding: 15px; min-width: 250px;')
@@ -67,8 +88,8 @@ html
                                   label(for='password') Password
                                   input#password.form-control(type='password', name='password', placeholder='Password', required='required')
                                 .form-group
-                                  label(for='name') Name
-                                  input#name.form-control(type='text', name='username', placeholder='Username', required='required')
+                                  label(for='name') User Name
+                                  input#name.form-control(type='text', name='username', placeholder='Name', required='required')
                                 .form-group
                                   label(for='age') Age
                                   input#age.form-control(type='text', name='age', placeholder='Age', required='required')
@@ -77,14 +98,15 @@ html
                                   input#location.form-control(type='text', name='location', placeholder='City', required='required')
                                 .form-group
                                   label(for='gender') Gender
-                                    input#gender(type='radio', name='gender', value='male')
-                                    label(for='Male') Male
-                                    input#gender(type='radio', name='gender', value='female')
-                                    label(for='Female') Female
+                                  .form-control
+                                    input#gender1(type='radio', name='gender', value='male')
+                                    label#male(for='male') Male
+                                    input#gender2(type='radio', name='gender', value='female')
+                                    label#female(for='female') Female
 
                                 .form-group
-                                  label(for='orientation') Seeking
-                                  select
+                                  label(for='orientation', name='orientation') Seeking
+                                  select.form-control
                                     option(name='male' value='male') Male
                                     option(name='female', value='female') Female
                                     option(name='both', value='both') Both
@@ -94,8 +116,8 @@ html
 
 
                   li.dropdown
-                    a.dropdown-toggle(href='#', data-toggle='dropdown')
-                      | Sign in
+                    a.glyphicon.glyphicon-log-in.dropdown-toggle(href='#', data-toggle='dropdown')
+                      | Login
                       b.caret
                     ul.dropdown-menu(style='padding: 15px; min-width: 250px;')
                       li
@@ -115,12 +137,27 @@ html
                               .form-group
                                 button.btn.btn-success.btn-block(type='submit') Sign in
                 //indent
-                if(isOnline)
+                if(locals.user)
                   li
-                    a(href='/logout') Logout
+                    a.glyphicon.glyphicon-off(href='/logout') Logout
             //
                /.navbar-collapse
 
+
+
+
+    #fakeModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='fakeLabel', aria-hidden='true')
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+            h4#fakeLabel.modal-title Message Subject variable
+          .modal-body
+              textarea#modalText(rows=10, cols=89)
+              //1 col = 6px
+          .modal-footer
+            textarea#messageText(rows=1, cols=50)
+            button.btn.btn-primary(type='button') Send
 
 
 
@@ -136,5 +173,9 @@ html
     script(src='/js/es5/main.js')
     script(src='/js/es6/compiled/main.js')
     script(src='/js/es6/compiled/sockets.js')
+    script(src='/js/es6/compiled/message.js')
+    script(src='/js/es6/compiled/chat.js')
 
     block scripts
+//-
+//-

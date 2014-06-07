@@ -1,11 +1,12 @@
 var bcrypt = require('bcrypt');
 var users = global.nss.db.collection('users');
-var Mongo = require('mongodb');
+// var Mongo = require('mongodb');
 //var _ = require('lodash');
 var traceur = require('traceur');
 var Base = traceur.require(__dirname + '/base.js');
 //{"name":"IloveForking","email":"phil@aol.com", "password":"7890", "gender":"male", "age":"24", "location":"02134", "orientation":"female"}
 class User{
+
   static create(obj, fn){
     users.findOne({email:obj.email}, (e,u)=>{
       if(u){
@@ -13,16 +14,15 @@ class User{
       }else{
         var user = new User();
         user.email = obj.email;
-        user._id = Mongo.ObjectID(obj._id);
         user.password = bcrypt.hashSync(obj.password, 8);
-        user.name = obj.name;
+        user.username = obj.username;
         user.gender = obj.gender;
         user.age = obj.age;
         user.genre = [];
         user.location = obj.location;
         user.orientation = obj.orientation;
         user.isOnline = true;
-        user.relationshipStatus = 'undefined';
+        user.relationshipStatus = undefined;
         user.coverPic = 'default.jpg';
         user.games = [];
 
@@ -62,7 +62,9 @@ class User{
     }
   }
 
+  saveGame(obj){
+    this.games.push(obj);
+    users.save(this, ()=>{});
+  }
 }
 module.exports = User;
-
-
