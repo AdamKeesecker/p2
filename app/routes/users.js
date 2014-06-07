@@ -1,4 +1,5 @@
 'use strict';
+
 var traceur = require('traceur');
 var User = traceur.require(__dirname + '/../models/user.js');
 var request = require('request');
