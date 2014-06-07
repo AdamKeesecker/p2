@@ -1,0 +1,7 @@
+[
+	{"name":"p0wnn00bs","email":"stewart@aol.com", "password":"1234","gender":"male", "_id":"12345abc678274653acdbe56", "age":"18", "location":"37069", "orientation":"female"},
+	{"name":"basementDweller","email":"sue@aol.com", "password":"5678", "gender":"male", "_id":"12345abc678274653acdbe54", "age":"42", "location":"37069", "orientation":"male"},
+	{"name":"indegoMontoya","email":"frank@aol.com", "password":"9012", "gender":"female", "age":"25", "location":"37069", "orientation":"female"},
+	{"name":"thereIsNoSpoon","email":"garth@aol.com", "password":"3456", "gender":"female", "age":"30", "location":"37069", "orientation":"both"},
+	{"name":"IloveForking","email":"phil@aol.com", "password":"7890", "gender":"male", "age":"24", "location":"02134", "orientation":"female"}
+]

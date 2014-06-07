@@ -36,7 +36,11 @@ server.listen(port, function(){
 
 /* --- socket.io        */
 var sockets = traceur.require(__dirname + '/lib/sockets.js');
+var socketsMessage = traceur.require(__dirname + '/lib/sockets_message.js');
+var socketsChatroom = traceur.require(__dirname + '/lib/sockets_chatroom.js');
 var io = require('socket.io')(server);
 io.of('/app').on('connection', sockets.connection);
+io.of('/message').on('connection', socketsMessage.connection);
+io.of('/chat').on('connection', socketsChatroom.connection);
 
 module.exports = app;

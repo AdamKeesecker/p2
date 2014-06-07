@@ -15,14 +15,21 @@ module.exports = (req, res, next)=>{
 
 function load(app, fn){
   var home = traceur.require(__dirname + '/../routes/home.js');
+  var users = traceur.require(__dirname + '/../routes/users.js');
+
+
+  app.all('*', users.lookup);
 
   app.get('/', dbg, home.index);
 
-  // app.post('/register', dbg, users.register);
-  // app.get('/login', dbg, users.dashboard);
-  // app.get('/users/:userId', dbg, users.view);
-  // app.get('/users', dbg, users.index);
-
+  app.post('/register', dbg, users.register);
+  app.post('/login', dbg, users.login);
+  app.get('/users/dashboard', dbg, users.loadDashboard);
+  app.get('/users', dbg, users.index);
+  app.get('/users/:userId', dbg, users.profile);
+  app.get('/users/find-game/:game', dbg, users.findGame);
+  app.get('/logout', dbg, users.logout);
+  app.put('/users/saveGame', dbg, users.saveGame);
 
 
   console.log('Routes Loaded');
