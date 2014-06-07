@@ -1,33 +1,35 @@
-glyphicon-home:before{
-  margin-right:5px;
-}
-
-.glyphicon-user:before{
-  margin-right:5px;
-}
-
-.glyphicon-search:before{
-  margin-right:5px;
-}
-
-
+.glyphicon-home:before, .glyphicon-user:before, .glyphicon-search:before, .glyphicon-list:before{
+  margin-right:7px;
+}// nav-bar glyph margin
 
 html body{
   height:100%;
   background-color:#171717;
+}// background color
+
+.navbar.navbar-inverse{
+  width:100%;
 }
 
+// END STOCK CSS
+
+
+
+
+
+
+// LANDING PAGE
 
 #imgContainer{
   position:relative;
+  margin-top:5%;
 
   #divButton{
     position:absolute;
-    top:10px;
-    left:47.5%;
-    background-color:red;
-    height:50px;
-    width:50px;
+    top:34%;
+    left:43%;
+    height:36.5%;
+    width:14%;
   }
 
   #logo{
@@ -35,5 +37,96 @@ html body{
     width:40%;
     margin: 0% 30%;
   }
-
 }
+
+// END LANDING PAGE
+
+
+
+// DASHBOARD CAROUSEL
+#carousel-example-generic{
+  width:50%;
+  margin-left:25%;
+  .carousel-inner{
+    .item{
+      width:20%;
+      margin-left:40%;
+      img{
+        width:100%;
+      }
+      .carousel-caption{
+        position:static;
+        width:100%;
+      }
+    }
+  }
+}// END CAROUSEL
+#carouselTitle{
+  color:white;
+}
+// END DASHBOARD
+
+
+
+
+
+// PROFILE PAGE
+#profile.well{
+  color:white;
+  background-image:none;
+  background-color:#393939;
+  margin-left:15%;
+  position:relative;
+  display:inline-block;
+  width:70%;
+  #profilePic.well{
+    position:relative;
+    color:inherit;
+    background:inherit;
+    width:15%;
+    height:150px;
+  }
+  #info{
+    position:relative;
+    color:inherit;
+    background:inherit;
+    position:absolute;
+    top:20px;
+    right:20px;
+    height:150px;
+    width:80%;
+  }
+  #about{
+    position:relative;
+    color:inherit;
+    background:inherit;
+    width:100%;
+  }
+  #profilePic, #info, #about{
+    btn-primary{
+      border-color:none;
+    }
+
+    button.btn.btn-primary.btn-sm{
+      background-image:none;
+      border-color:none !important;
+      background-color:rgba(39,39,39,.5);
+      position:absolute;
+      right:0;
+      top:0;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// -PAGE END
