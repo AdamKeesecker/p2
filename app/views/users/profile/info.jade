@@ -1,5 +1,4 @@
 #info.well
-  h6 info
   ul
     li User Name: #{locals.user.username}
     li Age: #{locals.user.age}
@@ -15,9 +14,9 @@
     .modal-content
       .modal-header
         button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-        h4#myModalLabel.modal-title Title variable
+        h4#myModalLabel.modal-title Info
       .modal-body
-        | variable content2
+        textarea#modalText(rows=10, cols=89)
       .modal-footer
         button.btn.btn-default(type='button', data-dismiss='modal') Close
         button.btn.btn-primary(type='button') Save changes
