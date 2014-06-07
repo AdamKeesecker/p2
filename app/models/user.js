@@ -6,6 +6,60 @@ var traceur = require('traceur');
 var Base = traceur.require(__dirname + '/base.js');
 //{"name":"IloveForking","email":"phil@aol.com", "password":"7890", "gender":"male", "age":"24", "location":"02134", "orientation":"female"}
 class User{
+  editInfo(info)
+  {
+    this.username = info.username;
+    this.age = info.age;
+    this.gender = info.gender;
+    this.location = info.location;
+    this.interestedIn = info.interestedIn;
+  }
+
+  deleteGame(gameId){
+    //this.games 
+
+    var filteredGames = _.filter(this.games, game=>{
+      if(game.id !== gameId){
+        return game;
+      }
+    });
+    this.games = filteredGames;
+    users.save(this, ()=>{});
+  }
+
+  saveGame(obj){
+    this.games.push(obj);
+    users.save(this, ()=>{});
+  }
+
+  save(fn)
+  {
+    if(this._id)
+    {
+      users.save(this, ()=>fn(this));
+    }
+    else
+    {
+      users.save(this, (e, user)=>fn(user));
+    }
+  }
+
+  isOwner(ownerId)
+  {
+    return ownerId === this._id.toString() || ownerId === 'profile';
+  }
+
+  get orientation(){
+    if(this.gender === this.interestedIn){
+      return 'gay';
+    }
+    if(this.interestedIn === 'both'){
+      return 'bi';
+    }
+    else{
+      return 'straight';
+    }
+  }
 
   static create(obj, fn){
     users.findOne({email:obj.email}, (e,u)=>{
@@ -20,13 +74,13 @@ class User{
         user.age = obj.age;
         user.genre = [];
         user.location = obj.location;
-        user.orientation = obj.orientation;
+        user.interestedIn = obj.interestedIn;
         user.isOnline = true;
         user.relationshipStatus = undefined;
         user.coverPic = 'default.jpg';
         user.games = [];
 
-        users.save(user, ()=>fn(user));
+        user.save(fn);
       }
     });
   }
@@ -48,35 +102,6 @@ class User{
 
   static findById(id, func){
     Base.findById(id, users, User, func);
-  }
-
-  get getOrientation(){
-    if(this.gender === this.orientation){
-      return 'gay';
-    }
-    if(this.orientation === 'both'){
-      return 'bi';
-    }
-    else{
-      return 'straight';
-    }
-  }
-
-  deleteGame(gameId){
-    //this.games 
-
-    var filteredGames = _.filter(this.games, game=>{
-      if(game.id !== gameId){
-        return game;
-      }
-    });
-    this.games = filteredGames;
-    users.save(this, ()=>{});
-  }
-
-  saveGame(obj){
-    this.games.push(obj);
-    users.save(this, ()=>{});
   }
 }
 module.exports = User;

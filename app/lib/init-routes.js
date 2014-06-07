@@ -33,6 +33,7 @@ function load(app, fn){
   app.get('/users/browse', dbg, users.browse);
   app.get('/users/:userId', dbg, users.profile);
   app.delete('/users/deleteGame/:gameId', dbg, users.deleteGame);
+  app.put('/users/info', dbg, users.editInfo);
 
   console.log('Routes Loaded');
   fn();

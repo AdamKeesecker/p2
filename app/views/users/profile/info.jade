@@ -1,22 +1,10 @@
-#info.well
-  ul
-    li User Name: #{locals.user.username}
-    li Age: #{locals.user.age}
-    li Gender: #{locals.user.gender}
-    li From: #{locals.user.location}
-    li Interested In: #{locals.user.interestedIn}
-  if(!isOwner)
-    button.btn.btn-primary.btn-sm(data-toggle='modal', data-target='#infoModal')
-      | Edit
-
-#infoModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
-  .modal-dialog
-    .modal-content
-      .modal-header
-        button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-        h4#myModalLabel.modal-title Info
-      .modal-body
-        textarea#modalText(rows=10, cols=89)
-      .modal-footer
-        button.btn.btn-default(type='button', data-dismiss='modal') Close
-        button.btn.btn-primary(type='button') Save changes
+h6 info
+ul
+  li User Name: #{locals.user.username}
+  li Age: #{locals.user.age}
+  li Gender: #{locals.user.gender}
+  li From: #{locals.user.location}
+  li Interested In: #{locals.user.seeking}
+- if(locals.user.isOwner(ownerId))
+  button.btn.btn-primary.btn-sm(data-toggle='modal', data-target='#infoModal')
+    | Edit

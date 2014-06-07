@@ -99,14 +99,16 @@ html
                                 .form-group
                                   label(for='gender') Gender
                                   .form-control
-                                    input#gender1(type='radio', name='gender', value='male')
-                                    label#male(for='male') Male
-                                    input#gender2(type='radio', name='gender', value='female')
-                                    label#female(for='female') Female
+                                    label
+                                      input#gender1(type='radio', name='gender', value='male')
+                                      label#male(for='male') Male
+                                    label
+                                      input#gender2(type='radio', name='gender', value='female')
+                                      label#female(for='female') Female
 
                                 .form-group
-                                  label(for='orientation', name='orientation') Seeking
-                                  select.form-control
+                                  label(for='interestedIn') Seeking
+                                  select(name='interestedIn').form-control
                                     option(name='male' value='male') Male
                                     option(name='female', value='female') Female
                                     option(name='both', value='both') Both

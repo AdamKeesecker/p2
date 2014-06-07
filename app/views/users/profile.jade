@@ -4,7 +4,34 @@ block content
   #profile.well
 
     include profile/pic
-
-    include profile/info
+      
+    #info.well
+      include profile/info
 
     include profile/about
+
+    #infoModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+            h4#myModalLabel.modal-title Title variable
+          .modal-body
+            form
+              label User Name
+                input(name='username' value=locals.user.username)
+              label Age
+                input(name='age' value=locals.user.age)
+              label Gender
+                input(name='gender' value=locals.user.gender)
+              label Location
+                input(name='location' value=locals.user.location)
+              label Seeking
+                input(name='interestedIn' value=locals.user.interestedIn)
+          .modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
+            button.btn.btn-primary(type='button') Save changes
+
+block scripts
+  - if(locals.user.isOwner(ownerId))
+    script(src='/js/es6/compiled/editProfile.js')

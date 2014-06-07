@@ -34,7 +34,7 @@ exports.lookup = (req, res, next)=>{
 };
 
 exports.profile = (req, res)=>{
-	res.render('users/profile', {title: 'P2'});
+	res.render('users/profile', {ownerId: req.params.userId, title: 'P2'});
 };
 
 //'http://www.giantbomb.com/api/search/?api_key=29aa8adf95f48bba35259a53d0bf5516c3b6e529&format=json&query="'+game+'"&resources=game'
@@ -73,4 +73,12 @@ exports.logout = (req, res)=>
 {
 	req.session.userId = null;
 	res.redirect('/');
+};
+
+
+exports.editInfo = (req, res)=>
+{
+	var user = res.locals.user;
+	user.editInfo(req.body);
+	user.save(user=>res.render('users/profile/info', {ownerId: user._id.toString()}));
 };
