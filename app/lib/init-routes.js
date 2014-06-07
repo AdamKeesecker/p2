@@ -21,13 +21,14 @@ function load(app, fn){
   app.all('*', users.lookup);
 
   app.get('/', dbg, home.index);
+
   app.post('/register', dbg, users.register);
   app.post('/login', dbg, users.login);
   app.get('/users/dashboard', dbg, users.loadDashboard);
   app.get('/users', dbg, users.index);
   app.get('/users/:userId', dbg, users.profile);
   app.get('/users/find-game/:game', dbg, users.findGame);
-  
+  app.get('/logout', dbg, users.logout);
 
 
 
