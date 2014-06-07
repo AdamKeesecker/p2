@@ -10,12 +10,15 @@ $(function()
 
   // --------------------
   // This code will test the socket message functionality
-  var message = {
-    senderId: '123456789012345678901234',
-    recipientId: '098765432109876543210987',
-    body: 'Congratulations on sending your first message'
-  };
-  sendMessage(message);
+  setTimeout(function()
+  {
+    var message = {
+      senderId: '123456789012345678901234',
+      recipientId: '098765432109876543210987',
+      body: 'Congratulations on sending your first message'
+    };
+    sendMessage(message);
+  }, 2000);
   // --------------------
 
   function sendMessage(msg)
