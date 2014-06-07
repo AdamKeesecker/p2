@@ -45,7 +45,10 @@ exports.findGame = (req, res)=>{
 	    //console.log(body); // Print the google web page.
 	  }
 	});
-
 };
 
-
+exports.logout = (req, res)=>
+{
+	req.session.userId = null;
+	res.redirect('/');
+};
