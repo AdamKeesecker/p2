@@ -35,11 +35,14 @@ html
           #bs-example-navbar-collapse-1.collapse.navbar-collapse
             ul.nav.navbar-nav
               li
-                a(class='glyphicon glyphicon-home', href='/') Home
+                a.glyphicon.glyphicon-home(href='/') Home
               li
-                a(class='glyphicon glyphicon-user', href='/users/dashboard') Dashboard
+                a.glyphicon.glyphicon-list(href='/users/dashboard') Dashboard
+              - if(typeof('#{locals.userId}') === string)
+                li
+                  a.glyphicon.glyphicon-user(href='/users/#{locals.userId.toString()}') Profile
               li
-                a(class='glyphicon glyphicon-search', href='/users') Search
+                a.glyphicon.glyphicon-search(href='/users') Search
 
 
             ul.nav.navbar-nav.navbar-right
