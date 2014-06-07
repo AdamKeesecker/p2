@@ -15,7 +15,7 @@ block content
       .item.active
         img(src='/img/default.jpg', alt='/img/default.jpg')
         .carousel-caption
-          | specific caption1 
+          | specific caption1
       .item
         img(src='/img/default2.jpeg', alt='/img/default.jpg')
         .carousel-caption
@@ -39,18 +39,4 @@ block content
 
     // INCORRECT PAGE FOR THIS MODAL
 
-  button.btn.btn-primary.btn-sm(data-toggle='modal', data-target='#myModal')
-    | Modal
-  //
-     Modal
-  #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
-    .modal-dialog
-      .modal-content
-        .modal-header
-          button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-          h4#myModalLabel.modal-title Modal title
-        .modal-body
-          | ...
-        .modal-footer
-          button.btn.btn-default(type='button', data-dismiss='modal') Close
-          button.btn.btn-primary(type='button') Save changes
+  
