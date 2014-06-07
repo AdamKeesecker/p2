@@ -1,5 +1,4 @@
 /* global io */
-/* jshint unused: false */
 
 'use strict';
 
@@ -7,40 +6,49 @@ $(function()
 {
   var socket;
 
-  var userId = '123456789012345678901234';
+  var userId = '539274c2f928054c0f91b875';
 
   initializeSocketIo();
 
-  // // --------------------
-  // // This code will test the socket message functionality
-  // var message = {
-  //   senderId: userId,
-  //   recipientId: '098765432109876543210987',
-  //   body: 'Congratulations on sending your first message'
-  // };
-  // sendMessage(message);
-  // // --------------------
+  // --------------------
+  // This code will test the socket message functionality
+  setTimeout(function()
+  {
+    var message = {
+      senderId: userId,
+      recipientId: '098765432109876543210987',
+      body: 'Congratulations on sending your first message'
+    };
+    sendMessage(message);
+  }, 2000);
+  // --------------------
 
-  // function sendMessage(msg)
-  // {
-  //   socket.emit('send', msg);
-  // }
+  function sendMessage(msg)
+  {
+    socket.emit('send', msg);
+  }
 
-  // function sentConfirmed(msg)
-  // {
-  //   console.log(msg);
-  // }
+  function sentConfirmed(msg)
+  {
+    console.log(msg);
+  }
 
-  // function recieveMessage(msg)
-  // {
-  //   console.log(msg);
-  // }
+  function receiveMessage(msg)
+  {
+    console.log(msg);
+  }
+
+  function error(err)
+  {
+    console.log(err);
+  }
 
   function initializeSocketIo()
   {
     socket = io.connect('/message');
-    // socket.on(userId, recieveMessage);
-    // socket.on('sent', sentConfirmed);
+    socket.on('sent', sentConfirmed);
+    socket.on('message', error);
+    socket.on(userId, receiveMessage);
   }
 
   // function ajax(url, type, data={}, success=r=>console.log(r), dataType='html')

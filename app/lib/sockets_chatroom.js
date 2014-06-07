@@ -3,15 +3,15 @@
 var traceur = require('traceur');
 var User;
 
-exports.connection = function(socket){
-  User = traceur.require(__dirname + '/../models/users.js');
-
+exports.connection = function(socket)
+{
   socket.on('post', post);
 };
 
 function post(comment)
 {
   var socket = this;
+  User = traceur.require(__dirname + '/../models/user.js');
 
   User.findById(comment.senderId, user=>
   {
@@ -21,7 +21,7 @@ function post(comment)
     }
     else
     {
-      socket.send('CHTERR', 'Please sign in to post to our chat rooms');
+      socket.send('Please sign in to post to our chat rooms');
     }
   });
 
