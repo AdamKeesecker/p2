@@ -30,6 +30,7 @@ function load(app, fn){
   app.get('/users/find-game/:game', dbg, users.findGame);
   app.get('/logout', dbg, users.logout);
   app.put('/users/saveGame', dbg, users.saveGame);
+  app.get('/users/browse', dbg, users.browse);
 
 
   console.log('Routes Loaded');
