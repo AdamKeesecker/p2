@@ -26,6 +26,7 @@ function load(app, fn){
   app.get('/users/dashboard', dbg, users.loadDashboard);
   app.get('/users', dbg, users.index);
   app.get('/users/:userId', dbg, users.profile);
+  app.get('/users/find-game/:game', dbg, users.findGame);
   
 
 
