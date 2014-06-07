@@ -51,9 +51,33 @@ html
 
 
               ul.nav.navbar-nav.navbar-right
+                if(locals.user)
+                  li.dropdown
+                    a.glyphicon.glyphicon-send.dropdown-toggle(href='#', data-toggle='dropdown')
+                      | Messages
+                      b.caret
+                    ul.dropdown-menu(style='padding: 15px; min-width: 250px;')
+                      li
+                        .row
+                          .col-md-12
+                            .message-from
+                              img.from.from-pic(src='/img/default.jpg')
+                              .message-body
+                                | So I like think you're pretty cool and stuff...
+                            .message-to
+                              .message-body-to
+                                | So I like think you're pretty cool and stuff...
+                              img.to.to-pic(src='/img/default2.jpeg')
+
+
+
+
+
+
+
                 if(!locals.user)
                   li.dropdown
-                      a.dropdown-toggle(href='#', data-toggle='dropdown')
+                      a.glyphicon.glyphicon-pencil.dropdown-toggle(href='#', data-toggle='dropdown')
                         | Register
                         b.caret
                       ul.dropdown-menu(style='padding: 15px; min-width: 250px;')
@@ -95,8 +119,8 @@ html
 
 
                   li.dropdown
-                    a.dropdown-toggle(href='#', data-toggle='dropdown')
-                      | Sign in
+                    a.glyphicon.glyphicon-log-in.dropdown-toggle(href='#', data-toggle='dropdown')
+                      | Login
                       b.caret
                     ul.dropdown-menu(style='padding: 15px; min-width: 250px;')
                       li
@@ -118,7 +142,7 @@ html
                 //indent
                 if(locals.user)
                   li
-                    a(href='/logout') Logout
+                    a.glyphicon.glyphicon-off(href='/logout') Logout
             //
                /.navbar-collapse
 
@@ -141,3 +165,5 @@ html
     script(src='/js/es6/compiled/chat.js')
 
     block scripts
+//-
+//-

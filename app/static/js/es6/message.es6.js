@@ -6,7 +6,7 @@ $(function()
 {
   var socket;
 
-  var userId = '539274c2f928054c0f91b875';
+  var userId = '539330cabff7a022a2c22c3b';
 
   initializeSocketIo();
 
@@ -16,7 +16,7 @@ $(function()
   {
     var message = {
       senderId: userId,
-      recipientId: '098765432109876543210987',
+      recipientId: '53922ab0c7a5ad4c9cb8543d',
       body: 'Congratulations on sending your first message'
     };
     sendMessage(message);
@@ -30,7 +30,7 @@ $(function()
 
   function sentConfirmed(msg)
   {
-    console.log(msg);
+    console.log('You have sent a message');
   }
 
   function receiveMessage(msg)
