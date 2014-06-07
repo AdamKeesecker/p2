@@ -7,6 +7,10 @@ html body{
   background-color:#171717;
 }// background color
 
+.navbar.navbar-inverse{
+  width:100%;
+}
+
 // END STOCK CSS
 
 
@@ -18,6 +22,7 @@ html body{
 
 #imgContainer{
   position:relative;
+  margin-top:5%;
 
   #divButton{
     position:absolute;
@@ -36,8 +41,12 @@ html body{
 
 // END LANDING PAGE
 
+
+
 // DASHBOARD CAROUSEL
 #carousel-example-generic{
+  width:50%;
+  margin-left:25%;
   .carousel-inner{
     .item{
       width:20%;
@@ -51,15 +60,63 @@ html body{
       }
     }
   }
+}// END CAROUSEL
+#carouselTitle{
+  color:white;
 }
-
-// END CAROUSEL
-
 // END DASHBOARD
 
 
 
 
+
+// PROFILE PAGE
+#profile.well{
+  color:white;
+  background-image:none;
+  background-color:#393939;
+  margin-left:15%;
+  position:relative;
+  display:inline-block;
+  width:70%;
+  #profilePic.well{
+    position:relative;
+    color:inherit;
+    background:inherit;
+    width:15%;
+    height:150px;
+  }
+  #info{
+    position:relative;
+    color:inherit;
+    background:inherit;
+    position:absolute;
+    top:20px;
+    right:20px;
+    height:150px;
+    width:80%;
+  }
+  #about{
+    position:relative;
+    color:inherit;
+    background:inherit;
+    width:100%;
+  }
+  #profilePic, #info, #about{
+    btn-primary{
+      border-color:none;
+    }
+
+    button.btn.btn-primary.btn-sm{
+      background-image:none;
+      border-color:none !important;
+      background-color:rgba(39,39,39,.5);
+      position:absolute;
+      right:0;
+      top:0;
+    }
+  }
+}
 
 
 
