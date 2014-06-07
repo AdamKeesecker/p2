@@ -1,3 +1,7 @@
-.div(data-id= #{game.id})
-  h6= game.image.thumb_url
-  h6= game.name
+each game in games
+  .div(data-id= game.id)
+    if(game.image)
+      .picture(data-url= game.image.thumb_url)
+        img(src= game.image.thumb_url)
+    .name= game.name
+    button.addGame Add Game to favorites

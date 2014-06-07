@@ -62,6 +62,10 @@ class User{
     }
   }
 
+  saveGame(obj){
+    this.games.push(obj);
+    users.save(this, ()=>{});
+  }
 }
 module.exports = User;
 
