@@ -47,6 +47,10 @@ exports.findGame = (req, res)=>{
 	});
 };
 
+exports.browse = (req, res)=>{
+	res.render('users/browse', {title: 'Find your p2!'});
+};
+
 exports.saveGame = (req, res)=>{
 	User.findById(req.session.userId, user=>{
 		user.saveGame(req.body);
