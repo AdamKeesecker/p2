@@ -4,9 +4,7 @@ var User = traceur.require(__dirname + '/../models/user.js');
 var request = require('request');
 
 exports.index = (req,res)=>{
-	User.findById(req.session.userId, user=>{
-		res.render('users/index', {user:user});
-	});
+	res.render('users/index', {title: 'P2'});
 };
 
 exports.register = (req, res)=>{
@@ -24,9 +22,7 @@ exports.login = (req, res)=>{
 };
 
 exports.loadDashboard = (req, res)=>{
-	User.findById(req.session.userId, user=>{
-		res.render('users/dashboard', {title: user.name, user:user});
-	});
+	res.render('users/dashboard', {title: 'P2'});
 };
 
 exports.lookup = (req, res, next)=>{
@@ -37,9 +33,7 @@ exports.lookup = (req, res, next)=>{
 };
 
 exports.profile = (req, res)=>{
-	User.findById(req.params.userId, user=>{
-		res.render('users/profile', {user: user});
-	});
+	res.render('users/profile', {title: 'P2'});
 };
 
 //'http://www.giantbomb.com/api/search/?api_key=29aa8adf95f48bba35259a53d0bf5516c3b6e529&format=json&query="'+game+'"&resources=game'
