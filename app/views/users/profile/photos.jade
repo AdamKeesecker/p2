@@ -1,0 +1,8 @@
+form.form-group
+  input#new-photos(type='file' name='photo' multiple=true enctype='multipart/form-data')
+  if photos
+    each photo in photos
+      .profilePhoto
+        img(src='/img/users/#{locals.user._id}/#{photo}' style='width: 100px; height: 80px;')
+        button.btn.btn-danger.delete-photo X
+        button.btn.btn-primary.make-profile-pic Default

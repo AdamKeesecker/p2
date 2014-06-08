@@ -186,6 +186,7 @@ html body{
 
 
 
+
 // LANDING PAGE
 
 #imgContainer{
@@ -259,16 +260,15 @@ html body{
   position:relative;
   display:inline-block;
   width:70%;
-  #profilePic.well{
+  #photos.well{
     position:relative;
     color:inherit;
     background:inherit;
     width:15%;
     height:150px;
   }
-  #info{
-    style:none;
-    position:relative;
+  #info.well{
+    text-align:center;
     color:inherit;
     background:inherit;
     position:absolute;
@@ -276,14 +276,55 @@ html body{
     right:20px;
     height:150px;
     width:80%;
+    #name.well.well-sm, #age.well.well-sm, #gender.well.well-sm, #location.well.well-sm, #intrest.well.well-sm{
+      position:relative;
+      display:inline-block;
+      border: 1px solid black;
+      background-image:none;
+      background-color:#303030;
+      line-height:10px;
+      color:white;
+      height:25px;
+      padding:7px;
+      margin:0;
+      width:45%;
+      margin:5px;
+      #nameT, #ageT, #genderT, #locationT, #intrestT{
+        display:inline-block;
+        position:absolute;
+        left:0px;
+        top:0px;
+        border-color:black;
+        border: 0px solid black;
+        border-right:1px solid black;
+        border-top-right-radius:0px;
+        border-bottom-right-radius:0px;
+        background-image:none;
+        background-color:#303030;
+        line-height:10px;
+        color:white;
+        height:23px;
+        padding:7px;
+        margin:0;
+      }
+      #nameV, #ageV, #genderV, #locationV, #intrestV{
+        display:inline-block;
+        position:absolute;
+        right:5px;
+      }
+    }
+    #name.well.well-sm, #age.well.well-sm{
+      margin-top:12px;
+    }
   }
   #about{
+
     position:relative;
     color:inherit;
     background:inherit;
     width:100%;
   }
-  #profilePic, #info, #about{
+  #photos, #info, #about{
     btn-primary{
       border-color:none;
     }
@@ -315,7 +356,7 @@ html body{
 
 
 // TEXT AREAS LOL
-#modalText{
+.modalText{
   resize:none;
 }
 #messageText{

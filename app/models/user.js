@@ -5,14 +5,18 @@ var _ = require('lodash');
 var traceur = require('traceur');
 var Base = traceur.require(__dirname + '/base.js');
 //{"name":"IloveForking","email":"phil@aol.com", "password":"7890", "gender":"male", "age":"24", "location":"02134", "orientation":"female"}
+var fssafe = traceur.require(__dirname + '/../lib/fssafe.js');
+
 class User{
-  editInfo(info)
+  editProfile(info)
   {
-    this.username = info.username;
-    this.age = info.age;
-    this.gender = info.gender;
-    this.location = info.location;
-    this.interestedIn = info.interestedIn;
+    for(var property in info)
+    {
+      if(this.hasOwnProperty(property))
+      {
+        this[property] = info[property];
+      }
+    }
   }
 
   deleteGame(gameId){
@@ -46,7 +50,46 @@ class User{
 
   isOwner(ownerId)
   {
-    return ownerId === this._id.toString();
+    if(ownerId && this)
+    {
+      return ownerId.toString() === this._id.toString();
+    }
+    return false;
+  }
+
+  storePhotos(photos)
+  {
+    if(photos)
+    {
+      var path = `/img/users/${this._id}`;
+      fssafe.mkdirSafeSync(path);
+
+      photos.forEach(p=>
+      {
+        if(p.originalFilename)
+        {
+          fssafe.renameSafeSync(p.path, `${path}/${p.originalFilename}`);
+        }
+      });
+    }
+  }
+
+  setProfilePic(photo)
+  {
+    this.profilePic = photo;
+  }
+
+  get seeking()
+  {
+    switch(this.interestedIn)
+    {
+      case 'male':
+        return 'Men';
+      case 'female':
+        return 'Women';
+      default:
+        return 'Men and women';
+    }
   }
 
   get orientation(){
@@ -72,12 +115,13 @@ class User{
         user.username = obj.username;
         user.gender = obj.gender;
         user.age = obj.age;
+        user.about = '';
         user.genre = [];
         user.location = obj.location;
         user.interestedIn = obj.interestedIn;
         user.isOnline = true;
         user.relationshipStatus = undefined;
-        user.coverPic = 'default.jpg';
+        user.profilePic = '';
         user.games = [];
         user.latlong = [];
 

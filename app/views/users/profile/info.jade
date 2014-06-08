@@ -1,9 +1,23 @@
-ul
-  li User Name: #{locals.user.username}
-  li Age: #{locals.user.age}
-  li Gender: #{locals.user.gender}
-  li From: #{locals.user.location}
-  li Interested In: #{locals.user.interestedIn}
-- if(locals.user.isOwner(ownerId))
+#name.well.well-sm
+  #nameT.well.well-sm Username:
+  #nameV #{locals.user.username}
+
+#age.well.well-sm
+  #ageT.well.well-sm Age:
+  #ageV #{locals.user.age}
+
+#gender.well.well-sm
+  #genderT.well.well-sm Gender:
+  #genderV #{locals.user.gender}
+
+#location.well.well-sm
+  #locationT.well.well-sm Location:
+  #locationV #{locals.user.location}
+
+#intrest.well.well-sm
+  #intrestT.well.well-sm Interested In:
+  #intrestV #{locals.user.interestedIn}
+
+- if(locals.user.isOwner(owner._id))
   button.btn.btn-primary.btn-sm(data-toggle='modal', data-target='#infoModal')
     | Edit
