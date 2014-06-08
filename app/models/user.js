@@ -79,6 +79,7 @@ class User{
         user.relationshipStatus = undefined;
         user.coverPic = 'default.jpg';
         user.games = [];
+        user.latlong = [];
 
         user.save(fn);
       }
