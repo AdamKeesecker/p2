@@ -95,7 +95,7 @@ html
                                   input#age.form-control(type='text', name='age', placeholder='Age', required='required')
                                 .form-group
                                   label(for='location') Location
-                                  input#location.form-control(type='text', name='location', placeholder='City', required='required')
+                                  input#location.form-control(type='text', name='location', placeholder='Example: City, State', required='required')
                                 .form-group
                                   label(for='gender') Gender
                                   .form-control
@@ -155,7 +155,7 @@ html
             button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
             h4#fakeLabel.modal-title Message Subject variable
           .modal-body
-              textarea.modalText(rows=10, cols=89)
+              #messages You will view your messages here
               //1 col = 6px
           .modal-footer
             textarea#messageText(rows=1, cols=50)

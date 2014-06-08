@@ -123,6 +123,7 @@ class User{
         user.relationshipStatus = undefined;
         user.profilePic = '';
         user.games = [];
+        user.latlong = [];
 
         user.save(fn);
       }

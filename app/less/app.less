@@ -58,30 +58,101 @@ html body{
     max-width:150px;
   }
 }
-//
-// .message-to{
-//   width:205px;
-//   position:relative;
-//   display:inline-block;
-//   .to.to-pic{
-//     border-radius: 4px;
-//     display:inline-block;
-//     width:40px;
-//     height: 40px;
-//   }
-//   .message-body-to{
-//     margin-right:5px;
-//     display:inline-block;
-//     position:relative;
-//     left:10px;
-//     top:10px;
-//     max-width:160px;
-//   }
-// }
-
 // END NAVBAR MESSAGING
 
+// BROWSE PAGE
+#browse.well{
+  text-align:center;
+  border-color:black;
+  background-image:none;
+  background-color:#1A1A1A;
+  margin-left:25%;
+  display:inline-block;
+  padding:5px;
+  height:38px;
+  width:50%;
+  #orientation{
+    display:inline-block;
+    width:30%;
+    margin-right:5%;
+    height:25px;
+  }
+  #sex{
+    display:inline-block;
+    width:30%;
+    margin-right:5%;
+    height:25px;
 
+  }
+  #distance{
+    display:inline-block;
+    width:30%;
+    height:25px;
+  }
+  #orientation, #sex, #distance{
+    border-color:black;
+    background-color:#313131;
+    background-image:none;
+    color:white;
+  }
+}
+
+#filteredMatches{
+  margin-right:25%;
+  margin-left:25%;
+  margin-top:20px;
+  display:inline-block;
+  position:relative;
+  .user.well{
+    border: 1px groove black;
+    background-color:#313131;
+    background-image:none;
+    color:white;
+    margin-right:10px;
+    display:inline-block;
+    text-align:center;
+    width:200px;
+    height:100px;
+    overflow:hidden;
+  }
+}
+
+#filterSpecifity{
+  // position:relative;
+  // top:5px;
+  // left:4px;
+  margin-top:15px;
+  height:27px;
+  width:100px;
+  background-image:none;
+  background-color:#313131;
+  color:white;
+  border:1px solid black;
+}
+
+#carouselBrowse{
+  margin-top:25px;
+  width:50%;
+  margin-left:25%;
+  .carousel-inner{
+    .item{
+      width:20%;
+      margin-left:40%;
+      img{
+        width:100%;
+      }
+      .carousel-caption{
+        position:static;
+        width:100%;
+      }
+    }
+  }
+}// END CAROUSEL
+#carouselTitle{
+  color:white;
+}
+
+// END BROWSE PAGE
 
 
 
@@ -163,10 +234,22 @@ html body{
 #carouselTitle{
   color:white;
 }
+.heading{
+  position: relative;
+  width: 50em;
+  margin-left: 50%;
+  right: 25em;
+  text-align: center;
+  margin-top: 5em;
+}
+
+.search{
+  position: relative;
+  margin-left:50%;
+  right: 134px;
+}
+
 // END DASHBOARD
-
-
-
 
 
 // PROFILE PAGE
@@ -214,6 +297,14 @@ html body{
       right:0;
       top:0;
     }
+  }
+}
+
+.chatroom.well{
+  width: 80%;
+  margin: auto;
+  .chat{
+    text-align: center;
   }
 }
 

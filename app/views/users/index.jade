@@ -2,15 +2,17 @@ extends ../shared/template
 
 block content
   #currentFavorites
-<<<<<<< HEAD
+
     include currentFavorites
-=======
     each game in user.games
         .div(data-id= game.id)
         .picture(data-url= game.url)
           img(src= game.url)
         .name= game.title
->>>>>>> f47ce17d3a4ebcb0b067c4fefed6a38a14c6644a
+
+    if(locals.user.userId)
+      include currentFavorites
+
   input#search(type='text', placeholder='Search it dawg')
   button#submitSearch.btn-primary GOGOGOGO
 
