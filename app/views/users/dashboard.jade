@@ -14,9 +14,10 @@ block content
       each user, index in users
         .item(class='#{!index ? "active" : ""}')
           .carousel-img
-            img(src='/img/users/#{user._id}/#{user.profilePic}', alt='/img/default.jpg')
-            .carousel-caption
-              p= user.username
+            a(href='/users/#{user._id}')
+              img(src='/img/users/#{user._id}/#{user.profilePic}', alt='/img/default.jpg')
+              .carousel-caption
+                p= user.username
       |'
 
     a.left.carousel-control(href='#carousel-example-generic', data-slide='prev')
