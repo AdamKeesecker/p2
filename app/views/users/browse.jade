@@ -3,6 +3,7 @@ extends ../shared/template
 block content
 
 
+
   h1 Browse Locals in Your Area!
   #browse
     select(name='orientation')#orientation.form-control
@@ -22,6 +23,34 @@ block content
       option(name='100' value='100') 100 Miles
       option(name='150' value='150') 150 Miles
       option(name='anywhere' value='anywhere') Anywhere
+
+<<<<<<< HEAD
+  #carouselBrowse.carousel.slide(data-ride='carousel')
+    ol.carousel-indicators
+      li.active(data-target='#carouselBrowse', data-slide-to='0')
+      li(data-target='#carouselBrowse', data-slide-to='1')
+      li(data-target='#carouselBrowse', data-slide-to='2')
+
+    .carousel-inner
+      .item.active
+        img(src='/img/default.jpg', alt='/img/default.jpg')
+        .carousel-caption
+          | specific caption1
+      .item
+        img(src='/img/default2.jpeg', alt='/img/default.jpg')
+        .carousel-caption
+          | specific caption2
+      .item
+        img(src='/img/default3.jpeg', alt='/img/default.jpg')
+        .carousel-caption
+          | specific caption3
+      |'
+
+    a.left.carousel-control(href='#carouselBrowse', data-slide='prev')
+      span.glyphicon.glyphicon-chevron-left
+    a.right.carousel-control(href='#carouselBrowse', data-slide='next')
+      span.glyphicon.glyphicon-chevron-right
+
 
     button#filter filter matches
   #filteredMatches
