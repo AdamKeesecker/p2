@@ -28,6 +28,7 @@ function load(app, fn){
   app.get('/users', dbg, users.index);
 
   app.get('/users/find-game/:game', dbg, users.findGame);
+  app.put('/users/browse/filter', dbg, users.filterMatches);
   app.get('/logout', dbg, users.logout);
   app.put('/users/saveGame', dbg, users.saveGame);
   app.get('/users/browse', dbg, users.browse);

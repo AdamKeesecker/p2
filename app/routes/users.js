@@ -3,6 +3,9 @@
 var traceur = require('traceur');
 var User = traceur.require(__dirname + '/../models/user.js');
 var request = require('request');
+var users = global.nss.db.collection('users');
+var _ = require('lodash');
+
 
 exports.index = (req,res)=>{
 	res.render('users/index', {title: 'P2'});
@@ -10,8 +13,29 @@ exports.index = (req,res)=>{
 
 exports.register = (req, res)=>{
 	User.create(req.body, user=>{
-		req.session.userId = user._id;
-		res.redirect('/users/dashboard');
+		var location = req.body.location.split(',').map(each=> each.trim());
+		request('https://maps.googleapis.com/maps/api/geocode/json?address='+ location[0] +'+'+ location[1]+'&key=AIzaSyA8KZBmouKCevsWQ0QI_IvP53iVL_fFDVk', function (error, response, body) {
+		  if (!error && response.statusCode === 200) {
+		  	body = JSON.parse(body);
+		  	var latitude = body.results[0].geometry.location.lat;
+		  	var longitude = body.results[0].geometry.location.lng;
+		  	user.latlong.push(latitude, longitude);
+		  	users.save(user, ()=>{
+		  		req.session.userId = user._id;
+					res.redirect('/users/dashboard');
+		  	});
+		  }
+		});
+	});
+};
+
+exports.filterMatches = (req, res)=>{
+	User.findById(req.session.userId, user=>{
+		users.find({latlong: {$geoWithin: {$centerSphere: [user.latlong, (req.body.distance*1)/3959]}}}).toArray((err, userArr)=>{
+			var matches = _.filter(userArr, {'gender': req.body.sex});
+			matches = _.filter(matches, {'orientation': req.body.orientation});
+			res.render('users/filteredMatches', {users: matches});
+		});
 	});
 };
 
@@ -23,7 +47,9 @@ exports.login = (req, res)=>{
 };
 
 exports.loadDashboard = (req, res)=>{
-	res.render('users/dashboard', {title: 'P2'});
+	users.find().toArray((e,r)=>{
+		res.render('users/dashboard', {users:r, title: 'P2'});
+	});
 };
 
 exports.lookup = (req, res, next)=>{

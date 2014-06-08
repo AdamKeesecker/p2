@@ -1,4 +1,5 @@
 /*jshint unused:false*/
+/* exported ajax */
 
 (function(){
 	'use strict';
