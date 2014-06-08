@@ -22,7 +22,7 @@ exports.find = (req, res)=>{
 exports.add = (req, res)=>{
   User.findById(req.session.userId, user=>{
     user.saveGame(req.body);
-    res.render('users/currentFavorites', {user: user});
+    res.render('games/favorites', {user: user});
   });
 };
 
@@ -30,7 +30,7 @@ exports.remove = (req, res)=>{
   User.findById(req.session.userId, user=>{
     user.deleteGame(req.params.gameId);
     User.findById(req.session.userId, usr=>{
-      res.render('users/currentFavorites', {user: usr});
+      res.render('games/favorites', {user: usr});
     });
   });
 };

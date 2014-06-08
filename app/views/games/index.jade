@@ -1,7 +1,8 @@
 extends ../shared/template
 
 block content
-  #currentFavorites
+  #favorites
+    include favorites
 
     include currentFavorites
     each game in user.games
