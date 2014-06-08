@@ -10,7 +10,11 @@
 }// nav-bar glyph margin
 
 html body{
+  //PERMA SCROLL BAR
+  overflow-y:scroll;
   height:100%;
+
+
   background-color:#171717;
 }// background color
 
@@ -69,26 +73,33 @@ html body{
   margin-left:25%;
   display:inline-block;
   padding:5px;
-  height:38px;
+  height:auto;
   width:50%;
   #orientation{
     display:inline-block;
-    width:30%;
+    width:20%;
     margin-right:5%;
-    height:25px;
   }
   #sex{
     display:inline-block;
-    width:30%;
+    width:20%;
     margin-right:5%;
-    height:25px;
-
   }
   #distance{
     display:inline-block;
-    width:30%;
-    height:25px;
+    width:20%;
+    margin-right:5%;
   }
+  #game{
+    display:inline-block;
+    width:20%;
+    border:1px solid black;
+    background-color:#313131;
+    background-image:none;
+    color:white;
+
+  }
+
   #orientation, #sex, #distance{
     border-color:black;
     background-color:#313131;
@@ -97,7 +108,12 @@ html body{
   }
 }
 
-#filteredMatches{
+#filteredMatches.well.well-lg{
+  width:50%;
+  height:auto;
+  background-image:none;
+  background-color:#313131;
+  border: 1px solid black;
   margin-right:25%;
   margin-left:25%;
   margin-top:20px;
