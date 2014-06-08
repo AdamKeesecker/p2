@@ -8,18 +8,18 @@
 	}
 
 	function filterMatches(){
-		var orientation = $(this).prev().prev().prev().val();
-		var sex = $(this).prev().prev().val();
-		var distance = $(this).prev().val();
+		var orientation = $(this).prev().prev().prev().prev().val();
+		var sex = $(this).prev().prev().prev().val();
+		var distance = $(this).prev().prev().val();
+		var game = $(this).prev().val();
 		console.log(orientation, sex, distance);
-		var filterData = {orientation: orientation, sex:sex, distance:distance};
+		var filterData = {orientation: orientation, sex:sex, distance:distance, game: game};
 
-		ajax('/users/browse/filter', 'put', filterData, html=>{
+		ajax('/users/filter', 'put', filterData, html=>{
 			console.log(html);
 			$('#filteredMatches').empty().append(html);
 		});
-		// var orient = $('orentation').find('. option:selected');
-		// var sex =
+
 
 
 	}
