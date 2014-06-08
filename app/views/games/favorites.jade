@@ -1,9 +1,10 @@
 if(locals.user)
   each game in user.games
-    .div(data-id= game.id)
+    .div.favs.well.well-sm(data-id= game.id)
       form
         input.gameId(type= 'hidden', name= 'gameId', value= game.id)
-        button.deleteGame X
+        button.deleteGame
+          h6 x
       .picture(data-url= game.url)
       img(src= game.url)
       .name= game.title

@@ -70,7 +70,7 @@ html body{
   text-align:center;
   border-color:black;
   background-image:none;
-  background-color:#1A1A1A;
+  background-color:#202020;
   margin-left:25%;
   display:inline-block;
   padding:5px;
@@ -95,7 +95,7 @@ html body{
     display:inline-block;
     width:20%;
     border:1px solid black;
-    background-color:#313131;
+    background-color:#202020;
     background-image:none;
     color:white;
 
@@ -103,7 +103,7 @@ html body{
 
   #orientation, #sex, #distance{
     border-color:black;
-    background-color:#313131;
+    background-color:#202020;
     background-image:none;
     color:white;
   }
@@ -113,7 +113,7 @@ html body{
   width:50%;
   height:auto;
   background-image:none;
-  background-color:#313131;
+  background-color:#202020;
   border: 1px solid black;
   margin-right:25%;
   margin-left:25%;
@@ -122,7 +122,7 @@ html body{
   position:relative;
   .user.well{
     border: 1px groove black;
-    background-color:#313131;
+    background-color:#202020;
     background-image:none;
     color:white;
     margin-right:10px;
@@ -142,7 +142,7 @@ html body{
   height:27px;
   width:100px;
   background-image:none;
-  background-color:#313131;
+  background-color:#202020;
   color:white;
   border:1px solid black;
 }
@@ -182,14 +182,14 @@ html body{
   padding:10px 0px;
   width:22%;
   background-image:none;
-  background-color:#1A1A1A;
+  background-color:#202020;
   color:white;
   border:1px solid black;
   text-align:center;
   #search{
     padding:7px;
     border:1px solid black;
-    background-color:#313131;
+    background-color:#202020;
     background-image:none;
     color:white;
 
@@ -200,21 +200,73 @@ html body{
   }
 }
 
+#favorites{
+  .favs.well.well-sm{
+    background-image:none;
+    background-color:#202020;
+    border:1px solid black;
+    position:relative;
+    width:200px;
+    height:295px;
+    display:inline-block;
+    margin-right:10px;
+    img{
+      position:absolute;
+      width:150px;
+      height:200px;
+    }
+    .name{
+      color:white;
+      position:absolute;
+      top:210px;
+    }
+    button{
+      height:20px;
+      width:20px;
+      background-image:none;
+      background-color:rgba(10,10,10,.8);
+      border-radius:50%;
+      border:1px inset black;
+      position:absolute;
+      right:5px;
+      h6{
+        color:white;
+        position:relative;
+        bottom:11px;
+
+      }
+    }
+  }
+}
+
 #results{
+  position:relative;
   display:inline-block;
   width:100%;
   .gameContainer.well{
+    position:relative;
+    top:0;
+    background-color:#202020;
+    background-image:none;
+    border:1px solid black;
     margin-right:25px;
     margin-top:5px;
     display:inline-block;
     width:200px;
-    height:295px;
+    min-height:295px;
     .name{
+      height:50px;
+      color:white;
       padding:5px 0px;
     }
     img.image{
       height:200px;
       width:150px;
+    }
+    .glyphicon.glyphicon-star-empty, .glyphicon.glyphicon-star,{
+      position:absolute;
+      top:5px;
+      right:5px;
     }
   }
 }
@@ -316,7 +368,7 @@ html body{
 #profile.well{
   color:white;
   background-image:none;
-  background-color:#393939;
+  background-color:#202020;
   margin-left:15%;
   position:relative;
   display:inline-block;
@@ -342,7 +394,7 @@ html body{
       display:inline-block;
       border: 1px solid black;
       background-image:none;
-      background-color:#303030;
+      background-color:#202020;
       line-height:10px;
       color:white;
       height:25px;
@@ -361,7 +413,7 @@ html body{
         border-top-right-radius:0px;
         border-bottom-right-radius:0px;
         background-image:none;
-        background-color:#303030;
+        background-color:#202020;
         line-height:10px;
         color:white;
         height:23px;
