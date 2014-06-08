@@ -1,8 +1,9 @@
 each game in games
+  - var picture = game.image ? game.image.thumb_url : '/img/uhoh.jpg';
   .gameContainer.well
     .div(data-id= game.id)
-      if(game.image)
-        .picture(data-url= game.image.thumb_url)
-          img.image(src= game.image.thumb_url)
+      .picture(data-url= picture)
+        img.image(src= picture)
       .name= game.name
       button.addGame Add Game to favorites
+      .glyphicon.glyphicon-star-empty

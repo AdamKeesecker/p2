@@ -4,15 +4,6 @@ block content
   #favorites
     include favorites
 
-    each game in user.games
-        .div(data-id= game.id)
-        .picture(data-url= game.url)
-          img(src= game.url)
-        .name= game.title
-
-    if(locals.user.userId)
-      include currentFavorites
-
   #searchControls.well
     input#search(type='text', placeholder='Search it dawg')
     button#submitSearch.btn.btn-primary GOGOGOGO
@@ -21,7 +12,7 @@ block content
 
 block scripts
   script(src='/js/es6/compiled/games.js')
-
+  script(src='/js/es6/compiled/removeGame.js')
 
 // USED TO BE users/games
 // AKA THE SEARCH PAGE
