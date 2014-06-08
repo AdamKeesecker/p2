@@ -1,17 +1,5 @@
-#about.well
-  h6 about
-  if(!isOwner)
-    button.btn.btn-primary.btn-sm(data-toggle='modal', data-target='#aboutModal')
-      | Edit
-
-#aboutModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
-  .modal-dialog
-    .modal-content
-      .modal-header
-        button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-        h4#myModalLabel.modal-title About
-      .modal-body
-        textarea#modalText(rows=10, cols=89)
-      .modal-footer
-        button.btn.btn-default(type='button', data-dismiss='modal') Close
-        button.btn.btn-primary(type='button') Save changes
+h6 about
+| #{locals.user.about}
+- if(locals.user.isOwner(owner._id))
+  button.btn.btn-primary.btn-sm(data-toggle='modal', data-target='#aboutModal')
+    | Edit

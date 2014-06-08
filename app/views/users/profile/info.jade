@@ -5,6 +5,6 @@ ul
   li Gender: #{locals.user.gender}
   li From: #{locals.user.location}
   li Interested In: #{locals.user.seeking}
-- if(locals.user.isOwner(ownerId))
+- if(locals.user.isOwner(owner._id))
   button.btn.btn-primary.btn-sm(data-toggle='modal', data-target='#infoModal')
     | Edit
