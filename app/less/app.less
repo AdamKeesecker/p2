@@ -129,8 +129,27 @@ html body{
     display:inline-block;
     text-align:center;
     width:200px;
-    height:100px;
+    height:200px;
     overflow:hidden;
+    .matchesImg{
+      height: 100px;
+      width: 100px;
+      -webkit-column-count: 1;
+      -webkit-column-gap:   0px;
+      -moz-column-count:    1;
+      -moz-column-gap:      0px;
+      column-count:         1;
+      column-gap:           0px;
+      img{
+        display:block;
+        position: relative;
+        right: 25px;
+        margin-left: 50%;
+        right: 20px;
+        height: auto !important;
+        width:100% !important;
+      }
+    }
   }
 }
 

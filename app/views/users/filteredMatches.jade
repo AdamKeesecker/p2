@@ -1,3 +1,7 @@
 each user in users
   .user.well
-    h3= user.username
+    .matchesImg
+      a(href='/users/#{user._id}')
+        img(src='/img/users/#{user._id}/#{user.profilePic}')
+    h4= user.username
+    h4= user.age
