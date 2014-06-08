@@ -32,9 +32,16 @@ exports.register = (req, res)=>{
 
 exports.filterMatches = (req, res)=>{
 	User.findById(req.session.userId, user=>{
+		if(req.body.distance === 'anywhere'){req.body.distance = 25000;}
 		users.find({latlong: {$geoWithin: {$centerSphere: [user.latlong, (req.body.distance*1)/3959]}}}).toArray((err, userArr)=>{
 			var matches = _.filter(userArr, {'gender': req.body.sex});
 			matches = _.filter(matches, {'orientation': req.body.orientation});
+			if(req.body.game){
+				matches = _.filter(matches, match=>{
+					_.contains(match.games, req.body.game);
+					return match;
+				});
+			}
 			res.render('users/filteredMatches', {users: matches});
 		});
 	});
