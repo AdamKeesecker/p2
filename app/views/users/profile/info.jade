@@ -1,10 +1,9 @@
-h6 info
 ul
   li User Name: #{locals.user.username}
   li Age: #{locals.user.age}
   li Gender: #{locals.user.gender}
   li From: #{locals.user.location}
-  li Interested In: #{locals.user.seeking}
+  li Interested In: #{locals.user.interestedIn}
 - if(locals.user.isOwner(ownerId))
   button.btn.btn-primary.btn-sm(data-toggle='modal', data-target='#infoModal')
     | Edit
