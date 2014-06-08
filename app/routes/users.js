@@ -3,14 +3,10 @@
 var traceur = require('traceur');
 var User = traceur.require(__dirname + '/../models/user.js');
 var request = require('request');
-<<<<<<< HEAD
 var multiparty = require('multiparty');
 var fssafe = traceur.require(__dirname + '/../lib/fssafe.js');
-=======
 var users = global.nss.db.collection('users');
 var _ = require('lodash');
-
->>>>>>> 9166c8837f5984a62aa458e6383d4d8d69857912
 
 exports.index = (req,res)=>{
 	res.render('users/index', {title: 'P2'});
@@ -25,7 +21,7 @@ exports.register = (req, res)=>{
 		  	var latitude = body.results[0].geometry.location.lat;
 		  	var longitude = body.results[0].geometry.location.lng;
 		  	user.latlong.push(latitude, longitude);
-		  	users.save(user, ()=>{
+		  	user.save(user=>{
 		  		req.session.userId = user._id;
 					res.redirect('/users/dashboard');
 		  	});
