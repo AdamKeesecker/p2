@@ -14,7 +14,7 @@ exports.find = (req, res)=>{
   {
     if (!error && response.statusCode === 200) {
       body = JSON.parse(body);
-      res.render('users/gameInfo', {games: body.results});
+      res.render('games/info', {games: body.results});
     }
   });
 };
