@@ -61,10 +61,8 @@ html body{
 // END NAVBAR MESSAGING
 
 // BROWSE PAGE
-#browse{
+#browse.well{
   text-align:center;
-}
-#contain.well{
   border-color:black;
   background-image:none;
   background-color:#1A1A1A;
@@ -98,7 +96,42 @@ html body{
     color:white;
   }
 }
+
+#filteredMatches{
+  margin-right:25%;
+  margin-left:25%;
+  margin-top:20px;
+  display:inline-block;
+  position:relative;
+  .user.well{
+    border: 1px groove black;
+    background-color:#313131;
+    background-image:none;
+    color:white;
+    margin-right:10px;
+    display:inline-block;
+    text-align:center;
+    width:200px;
+    height:100px;
+    overflow:hidden;
+  }
+}
+
+#filterSpecifity{
+  // position:relative;
+  // top:5px;
+  // left:4px;
+  margin-top:15px;
+  height:27px;
+  width:100px;
+  background-image:none;
+  background-color:#313131;
+  color:white;
+  border:1px solid black;
+}
+
 #carouselBrowse{
+  margin-top:25px;
   width:50%;
   margin-left:25%;
   .carousel-inner{

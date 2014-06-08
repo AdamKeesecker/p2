@@ -4,7 +4,7 @@
 	$(document).ready(init);
 
 	function init(){
-		$('#filter').click(filterMatches);
+		$('#filterSpecifity').click(filterMatches);
 	}
 
 	function filterMatches(){
@@ -19,7 +19,7 @@
 			$('#filteredMatches').empty().append(html);
 		});
 		// var orient = $('orentation').find('. option:selected');
-		// var sex = 
+		// var sex =
 
 
 	}
