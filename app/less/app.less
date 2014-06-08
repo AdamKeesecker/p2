@@ -221,8 +221,23 @@ html body{
     .item{
       width:20%;
       margin-left:40%;
+      .carousel-img{
+        width: 144px;
+        height: 144px;
+        -webkit-column-count: 1;
+        -webkit-column-gap:   0px;
+        -moz-column-count:    1;
+        -moz-column-gap:      0px;
+        column-count:         1;
+        column-gap:           0px;
+      }
+
       img{
-        width:100%;
+        // width:150px;
+        // height: 150px;
+        width: 100% !important;
+        height: auto !important;
+
       }
       .carousel-caption{
         position:static;
