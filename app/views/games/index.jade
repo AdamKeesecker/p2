@@ -13,10 +13,15 @@ block content
     if(locals.user.userId)
       include currentFavorites
 
-  input#search(type='text', placeholder='Search it dawg')
-  button#submitSearch.btn-primary GOGOGOGO
+  #searchControls.well
+    input#search(type='text', placeholder='Search it dawg')
+    button#submitSearch.btn.btn-primary GOGOGOGO
 
   #results
 
 block scripts
   script(src='/js/es6/compiled/games.js')
+
+
+// USED TO BE users/games
+// AKA THE SEARCH PAGE
