@@ -2,8 +2,9 @@ extends ../shared/template
 
 block content
   #currentFavorites
-    if(locals.userId)
+    if(locals.user.userId)
       include currentFavorites
+
 
   input#search(type='text', placeholder='Search it dawg')
   button#submitSearch.btn-primary GOGOGOGO

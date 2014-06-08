@@ -3,26 +3,28 @@ extends ../shared/template
 block content
 
 
-  h1#browse(style='color:white') Browse Locals in Your Area!
-  #contain.well
-    select#orientation.form-control
+
+  h1 Browse Locals in Your Area!
+  #browse
+    select(name='orientation')#orientation.form-control
       option(name='straight' value='straight') Straight
       option(name='gay', value='gay') Gay
       option(name='bi', value='bi') Bi
 
-    select#sex.form-control
+    select(name='sex')#sex.form-control
       option(name='male' value='male') Male
       option(name='female', value='female') Female
 
     //- select#games.selectpicker
 
-    select#distance.form-control
+    select(name='distance')#distance.form-control
       option(name='25' value='25') 25 Miles
       option(name='50' value='50') 50 Miles
       option(name='100' value='100') 100 Miles
       option(name='150' value='150') 150 Miles
       option(name='anywhere' value='anywhere') Anywhere
 
+<<<<<<< HEAD
   #carouselBrowse.carousel.slide(data-ride='carousel')
     ol.carousel-indicators
       li.active(data-target='#carouselBrowse', data-slide-to='0')
@@ -49,4 +51,9 @@ block content
     a.right.carousel-control(href='#carouselBrowse', data-slide='next')
       span.glyphicon.glyphicon-chevron-right
 
+
+    button#filter filter matches
+  #filteredMatches
+
 block scripts
+  script(src='/js/es6/compiled/browse.js')
