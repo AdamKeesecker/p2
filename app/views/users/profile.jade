@@ -9,6 +9,8 @@ block content
       include profile/info
     #about.well
       include profile/about
+    #favorites.well
+      include ../games/favorites
 
     #picModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='picModalLabel', aria-hidden='true')
       .modal-dialog
@@ -62,3 +64,4 @@ block content
 block scripts
   - if(locals.user.isOwner(owner._id))
     script(src='/js/es6/compiled/editProfile.js')
+    script(src='/js/es6/compiled/removeGame.js')
