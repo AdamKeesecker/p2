@@ -15,7 +15,7 @@
 		console.log(orientation, sex, distance);
 		var filterData = {orientation: orientation, sex:sex, distance:distance, game: game};
 
-		ajax('/users/browse/filter', 'put', filterData, html=>{
+		ajax('/users/filter', 'put', filterData, html=>{
 			console.log(html);
 			$('#filteredMatches').empty().append(html);
 		});

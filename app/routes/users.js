@@ -8,8 +8,8 @@ var fssafe = traceur.require(__dirname + '/../lib/fssafe.js');
 var users = global.nss.db.collection('users');
 var _ = require('lodash');
 
-exports.index = (req,res)=>{
-	res.render('users/index', {title: 'P2'});
+exports.index = (req, res)=>{
+	res.render('users/index', {title: 'Find your p2!'});
 };
 
 exports.register = (req, res)=>{
@@ -83,10 +83,6 @@ exports.findGame = (req, res)=>{
 	  	res.render('users/gameInfo', {games: body.results});
 	  }
 	});
-};
-
-exports.browse = (req, res)=>{
-	res.render('users/browse', {title: 'Find your p2!'});
 };
 
 exports.deleteGame = (req, res)=>{
