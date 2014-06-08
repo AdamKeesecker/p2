@@ -1,0 +1,12 @@
+.modal-header
+  button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+  h4#fakeLabel.modal-title Messages
+.modal-body
+  each message in messages
+    - var x = message.senderId.toString() === locals.user._id.toString() ? 'To: ' + message.recipientId : 'From: ' + message.senderId;
+    ul
+      li= x
+      li= message.body
+.modal-footer
+  textarea#messageText(rows=1, cols=50)
+  button.btn.btn-primary(type='button') Send

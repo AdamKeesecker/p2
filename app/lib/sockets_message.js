@@ -17,6 +17,9 @@ function send(data)
 
   User.findById(data.senderId, sender=>
   {
+    console.log('SENDER');
+    console.log(data.senderId);
+    console.log(sender);
     if(sender)
     {
       User.findById(data.recipientId, recipient=>

@@ -2,6 +2,7 @@
 
 var traceur = require('traceur');
 var User = traceur.require(__dirname + '/../models/user.js');
+// var Message = traceur.require(__dirname + '/../models/message.js');
 var request = require('request');
 var multiparty = require('multiparty');
 var fssafe = traceur.require(__dirname + '/../lib/fssafe.js');
@@ -63,7 +64,16 @@ exports.loadDashboard = (req, res)=>{
 exports.lookup = (req, res, next)=>{
 	User.findById(req.session.userId, user=>{
 		res.locals.user = user;
-		next();
+		// Message.findBySenderId(user._id, sent=>
+		// {
+		// 	// res.locals.sent = sortMessagesByDate(sent);
+		// 	Message.findByRecipientId(user._id, received=>
+		// 	{
+		// 		// res.locals.received = sortMessagesByDate(received);
+		// 		res.locals.messages = sortMessagesByDate(sent.concat(received));
+				next();
+		// 	});
+		// });
 	});
 };
 

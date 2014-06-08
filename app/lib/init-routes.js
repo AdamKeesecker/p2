@@ -17,7 +17,7 @@ function load(app, fn){
   var home = traceur.require(__dirname + '/../routes/home.js');
   var users = traceur.require(__dirname + '/../routes/users.js');
   var games = traceur.require(__dirname + '/../routes/games.js');
-  // Add a new route, var games
+  var messages = traceur.require(__dirname + '/../routes/messages.js');
 
   app.all('*', users.lookup);
 
@@ -27,8 +27,6 @@ function load(app, fn){
   app.post('/login', dbg, users.login);
   app.get('/users/dashboard', dbg, users.loadDashboard);
   app.get('/users', dbg, users.index);
-
-  // See comment above ^^^ Add a games route
 
   app.put('/users/filter', dbg, users.filterMatches);
   app.get('/logout', dbg, users.logout);
@@ -43,6 +41,8 @@ function load(app, fn){
   app.get('/games/:game', dbg, games.find);
   app.put('/games/add', dbg, games.add);
   app.delete('/games/remove/:gameId', dbg, games.remove);
+
+  app.get('/messages/:recipientId', dbg, messages.index);
 
   console.log('Routes Loaded');
   fn();

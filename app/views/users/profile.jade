@@ -5,61 +5,66 @@ block content
 
     #photos.well
       include profile/pic
+      - if(locals.user.isOwner(owner._id))
+        #picModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='picModalLabel', aria-hidden='true')
+          .modal-dialog
+            .modal-content
+              .modal-header
+                button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                h4#picModalLabel.modal-title Pic
+              .modal-body
+                include profile/photos
+              .modal-footer
+                button.btn.btn-primary(type='button') Save changes
+                button.btn.btn-default(type='button', data-dismiss='modal') Done
+
+
+
+        #infoModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+          .modal-dialog
+            .modal-content
+              .modal-header
+                button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                h4#myModalLabel.modal-title Title variable
+              .modal-body
+                form
+                  label User Name
+                    input(name='username' value=locals.user.username)
+                  label Age
+                    input(name='age' value=locals.user.age)
+                  label Gender
+                    input(name='gender' value=locals.user.gender)
+                  label Location
+                    input(name='location' value=locals.user.location)
+                  label Seeking
+                    input(name='interestedIn' value=locals.user.interestedIn)
+              .modal-footer
+                button.btn.btn-default(type='button', data-dismiss='modal') Close
+                button.btn.btn-primary(type='button') Save changes
+
+        #aboutModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+          .modal-dialog
+            .modal-content
+              .modal-header
+                button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                h4#myModalLabel.modal-title About
+              .modal-body
+                form
+                  textarea#modalText(name='about' rows=10, cols=89)= locals.user.about
+              .modal-footer
+                button.btn.btn-default(type='button', data-dismiss='modal') Close
+                button.btn.btn-primary(type='button') Save changes
+
+      - else
+        button.btn.btn-primary.btn-sm.view-chat(data-recipientid=owner._id.toString())
+          | Message
+
     #info.well
       include profile/info
     #about.well
       include profile/about
     #favorites.well
       include ../games/favorites
-
-    #picModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='picModalLabel', aria-hidden='true')
-      .modal-dialog
-        .modal-content
-          .modal-header
-            button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-            h4#picModalLabel.modal-title Pic
-          .modal-body
-            include profile/photos
-          .modal-footer
-            button.btn.btn-primary(type='button') Save changes
-            button.btn.btn-default(type='button', data-dismiss='modal') Done
-
-
-
-    #infoModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
-      .modal-dialog
-        .modal-content
-          .modal-header
-            button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-            h4#myModalLabel.modal-title Title variable
-          .modal-body
-            form
-              label User Name
-                input(name='username' value=locals.user.username)
-              label Age
-                input(name='age' value=locals.user.age)
-              label Gender
-                input(name='gender' value=locals.user.gender)
-              label Location
-                input(name='location' value=locals.user.location)
-              label Seeking
-                input(name='interestedIn' value=locals.user.interestedIn)
-          .modal-footer
-            button.btn.btn-default(type='button', data-dismiss='modal') Close
-            button.btn.btn-primary(type='button') Save changes
-
-    #aboutModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
-      .modal-dialog
-        .modal-content
-          .modal-header
-            button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-            h4#myModalLabel.modal-title About
-          .modal-body
-            form
-              textarea#modalText(name='about' rows=10, cols=89)= locals.user.about
-          .modal-footer
-            button.btn.btn-default(type='button', data-dismiss='modal') Close
-            button.btn.btn-primary(type='button') Save changes
 
 block scripts
   - if(locals.user.isOwner(owner._id))
