@@ -1,22 +1,14 @@
 extends ../shared/template
 
 block content
-  #currentFavorites
+  #favorites
+    include favorites
 
-    include currentFavorites
-    each game in user.games
-        .div(data-id= game.id)
-        .picture(data-url= game.url)
-          img(src= game.url)
-        .name= game.title
-
-    if(locals.user.userId)
-      include currentFavorites
-
-  input#search(type='text', placeholder='Search it dawg')
+  input#search(type='text', placeholder='Search Games')
   button#submitSearch.btn-primary GOGOGOGO
 
   #results
 
 block scripts
   script(src='/js/es6/compiled/games.js')
+  script(src='/js/es6/compiled/removeGame.js')
