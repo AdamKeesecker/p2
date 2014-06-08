@@ -1,6 +1,8 @@
+'use strict';
+
 //var bcrypt = require('bcrypt');
 
-var messages = global.nss.db.collection('messages');
+var messageCollection = global.nss.db.collection('messages');
 var Mongo = require('mongodb');
 //var _ = require('lodash');
 var traceur = require('traceur');
@@ -17,12 +19,64 @@ class Message{
     message.isRead = false;
     message.date = new Date();
 
-    messages.save(message, ()=>fn(message));
+    messageCollection.save(message, ()=>fn(message));
   }
 
   static findById(id, func){
-    Base.findById(id, messages, Message, func);
+    Base.findById(id, messageCollection, Message, func);
   }
 
+  static findBySenderId(senderId, fn)
+  {
+    messageCollection.find({senderId: senderId}).toArray((e, messages)=>
+    {
+      fn(messages);
+    });
+  }
+
+  static findByRecipientId(recipientId, fn)
+  {
+    messageCollection.find({recipientId: recipientId}).toArray((e, messages)=>
+    {
+      fn(messages);
+    });
+  }
+
+  static getHistoryByIds(id1, id2, fn)
+  {
+    console.log('GETTING HISTORY');
+    Message.getOneWayHistoryByIds(id1, id2, msgs1=>
+    {
+      console.log('MSGS');
+      console.log(msgs1);
+      Message.getOneWayHistoryByIds(id2, id1, msgs2=>
+      {
+        console.log('MSGS');
+        console.log(msgs2);
+        var messages = sortMessagesByDate(msgs1.concat(msgs2));
+        console.log('CONCATINATED');
+        console.log(messages);
+        fn(messages);
+      });
+    });
+  }
+
+  static getOneWayHistoryByIds(senderId, recipientId, fn)
+  {
+    senderId = Mongo.ObjectID(senderId);
+    recipientId = Mongo.ObjectID(recipientId);
+
+    messageCollection.find({senderId: senderId, recipientId: recipientId}).toArray((e, messages)=>
+    {
+      messages = sortMessagesByDate(messages);
+      fn(messages);
+    });
+  }
 }
+
+function sortMessagesByDate(messages)
+{
+  return messages.sort((a,b)=>(a.date < b.date ? -1 : (a.date > b.date ? 1 : 0)));
+}
+
 module.exports = Message;

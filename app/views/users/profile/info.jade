@@ -1,22 +1,22 @@
 #name.well.well-sm
   #nameT.well.well-sm Username:
-  #nameV #{locals.user.username}
+  #nameV #{owner.username}
 
 #age.well.well-sm
   #ageT.well.well-sm Age:
-  #ageV #{locals.user.age}
+  #ageV #{owner.age}
 
 #gender.well.well-sm
   #genderT.well.well-sm Gender:
-  #genderV #{locals.user.gender}
+  #genderV #{owner.gender}
 
 #location.well.well-sm
   #locationT.well.well-sm Location:
-  #locationV #{locals.user.location}
+  #locationV #{owner.location}
 
 #intrest.well.well-sm
   #intrestT.well.well-sm Interested In:
-  #intrestV #{locals.user.interestedIn}
+  #intrestV #{owner.seeking}
 
 - if(locals.user.isOwner(owner._id))
   button.btn.btn-primary.btn-sm(data-toggle='modal', data-target='#infoModal')

@@ -1,5 +1,5 @@
 h6 about
-| #{locals.user.about}
+| #{owner.about}
 - if(locals.user.isOwner(owner._id))
   button.btn.btn-primary.btn-sm(data-toggle='modal', data-target='#aboutModal')
     | Edit
