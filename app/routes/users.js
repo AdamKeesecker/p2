@@ -47,7 +47,9 @@ exports.login = (req, res)=>{
 };
 
 exports.loadDashboard = (req, res)=>{
-	res.render('users/dashboard', {title: 'P2'});
+	users.find().toArray((e,r)=>{
+		res.render('users/dashboard', {users:r, title: 'P2'});
+	});
 };
 
 exports.lookup = (req, res, next)=>{
