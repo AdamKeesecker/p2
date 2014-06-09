@@ -121,7 +121,7 @@ class User{
         user.interestedIn = obj.interestedIn;
         user.isOnline = true;
         user.relationshipStatus = undefined;
-        user.profilePic = '';
+        user.profilePic = 'default2.jpeg';
         user.games = [];
         user.latlong = [];
 
