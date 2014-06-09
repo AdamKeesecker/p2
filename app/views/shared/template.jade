@@ -111,9 +111,9 @@ html
                                 .form-group
                                   label(for='interestedIn') Seeking
                                   select(name='interestedIn').form-control
-                                    option(name='male' value='male') Male
-                                    option(name='female', value='female') Female
-                                    option(name='both', value='both') Both
+                                    option(name='male' value='male') Men
+                                    option(name='female', value='female') Women
+                                    option(name='both', value='both') Men and Women
 
                                 .form-group
                                   button.btn.btn-primary.btn-block(type='submit') Register
@@ -153,13 +153,6 @@ html
     #messageModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true' data-userid=locals.user ? locals.user._id.toString() : '')
       .modal-dialog
         .modal-content
-          .modal-header
-            button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-            h4#fakeLabel.modal-title Loading...
-          .modal-body ...
-          .modal-footer
-            textarea#messageText(rows=1, cols=50)
-            button.btn.btn-primary(type='button') Send
 
 
 
