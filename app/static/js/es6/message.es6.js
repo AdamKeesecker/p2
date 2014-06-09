@@ -35,12 +35,20 @@ $(function()
   function viewMessages()
   {
     var recipientId = $(this).attr('data-recipientid');
+    updateMessageHistory(recipientId, ()=>
+    {
+      $openModal.trigger('click');
+    });
+  }
+
+  function updateMessageHistory(recipientId, fn=()=>{})
+  {
     ajax(`/messages/${recipientId}`, 'GET', {}, h=>
     {
       if(h)
       {
         $modalContent.html(h);
-        $openModal.trigger('click');
+        fn();
       }
     });
   }
@@ -65,7 +73,7 @@ $(function()
 
   function sentConfirmed(msg)
   {
-    console.log('You have sent a message');
+    updateMessageHistory(msg.recipientId);
   }
 
   function receiveMessage(msg)
