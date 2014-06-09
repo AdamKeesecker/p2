@@ -16,6 +16,21 @@ $(function()
   var userId = $modal.attr('data-userid');
 
   $('body').on('click', '.view-chat', viewMessages);
+  $('#messageModal').on('click', '#sendMessage', sendMessage);
+
+  function sendMessage()
+  {
+    var messageText = $('#messageText').val();
+    if(messageText)
+    {
+      var message = {
+        senderId: userId,
+        recipientId: $(this).attr('data-chatpartnerid'),
+        body: messageText
+      };
+      sendMessageToServer(message);
+    }
+  }
 
   function viewMessages()
   {
@@ -32,18 +47,18 @@ $(function()
 
   // --------------------
   // This code will test the socket message functionality
-  setTimeout(function()
-  {
-    var message = {
-      senderId: userId,
-      recipientId: '5394b84ddb51659912cb6cb6',
-      body: 'Congratulations on sending your first message'
-    };
-    sendMessage(message);
-  }, 1000);
+  // setTimeout(function()
+  // {
+  //   var message = {
+  //     senderId: '5394b84ddb51659912cb6cb6',
+  //     recipientId: userId,
+  //     body: 'Congratulations on sending your first message'
+  //   };
+  //   sendMessageToServer(message);
+  // }, 1000);
   // --------------------
 
-  function sendMessage(msg)
+  function sendMessageToServer(msg)
   {
     socket.emit('send', msg);
   }

@@ -37,13 +37,13 @@ function send(data)
         }
         else
         {
-          socket.send('Message recipient could not be verified');
+          socket.send(`Message recipient could not be verified: ${data.recipientId}`);
         }
       });
     }
     else
     {
-      socket.send('Message sender could not be verified');
+      socket.send(`Message sender could not be verified: ${data.senderId}`);
     }
   });
 

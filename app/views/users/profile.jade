@@ -36,28 +36,34 @@ block content
           .modal-content
             .modal-header
               button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-              h4#myModalLabel.modal-title Title variable
+              h4#myModalLabel.modal-title Info
             .modal-body
-              form
-                label User Name
-                  input(type='text' name='username' value=locals.user.username)
-                label Age
-                  input(type='number' name='age' value=locals.user.age)
-                label(for='gender') Gender
-                  label
-                    input#gender1(type='radio' name='gender' value='male')
-                    label#male(for='male') Male
-                  label
-                    input#gender2(type='radio' name='gender' value='female')
-                    label#female(for='female') Female
-                label Location
-                  input(name='location' value=locals.user.location)
-                label(for='interestedIn') Seeking
-                  - var interestedIn = locals.user.interestedIn;
-                  select(name='interestedIn')
-                    option(name='male' value='male' selected=interestedIn==='male' ? 'selected' : false) Male
-                    option(name='female', value='female' selected=interestedIn==='female' ? 'selected' : false) Female
-                    option(name='both', value='both' selected=interestedIn==='both' ? 'selected' : false) Both
+              form.form
+                .form-group
+                  label User Name
+                    input(type='text' name='username' value=locals.user.username)
+                .form-group
+                  label Age
+                    input(type='number' name='age' value=locals.user.age)
+                .form-group
+                  label(for='gender') Gender
+                    - var interestedIn = locals.user.gender;
+                    label
+                      input#gender1(type='radio' name='gender' value='male')
+                      label#male(for='male') Male
+                    label
+                      input#gender2(type='radio' name='gender' value='female')
+                      label#female(for='female') Female
+                .form-group
+                  label Location
+                    input(name='location' value=locals.user.location)
+                .form-group
+                  label(for='interestedIn') Seeking
+                    - var interestedIn = locals.user.interestedIn;
+                    select(name='interestedIn')
+                      option(name='male' value='male' selected=interestedIn==='male') Men
+                      option(name='female', value='female' selected=interestedIn==='female') Women
+                      option(name='both', value='both' selected=interestedIn==='both') Men and Women
             .modal-footer
               button.btn.btn-default(type='button', data-dismiss='modal') Close
               button.btn.btn-primary(type='button') Save changes
