@@ -31,8 +31,6 @@ block content
               button.btn.btn-primary(type='button') Save changes
               button.btn.btn-default(type='button', data-dismiss='modal') Done
 
-
-
       #infoModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
         .modal-dialog
           .modal-content
@@ -42,15 +40,24 @@ block content
             .modal-body
               form
                 label User Name
-                  input(name='username' value=locals.user.username)
+                  input(type='text' name='username' value=locals.user.username)
                 label Age
-                  input(name='age' value=locals.user.age)
-                label Gender
-                  input(name='gender' value=locals.user.gender)
+                  input(type='number' name='age' value=locals.user.age)
+                label(for='gender') Gender
+                  label
+                    input#gender1(type='radio' name='gender' value='male')
+                    label#male(for='male') Male
+                  label
+                    input#gender2(type='radio' name='gender' value='female')
+                    label#female(for='female') Female
                 label Location
                   input(name='location' value=locals.user.location)
-                label Seeking
-                  input(name='interestedIn' value=locals.user.interestedIn)
+                label(for='interestedIn') Seeking
+                  - var interestedIn = locals.user.interestedIn;
+                  select(name='interestedIn')
+                    option(name='male' value='male' selected=interestedIn==='male' ? 'selected' : false) Male
+                    option(name='female', value='female' selected=interestedIn==='female' ? 'selected' : false) Female
+                    option(name='both', value='both' selected=interestedIn==='both' ? 'selected' : false) Both
             .modal-footer
               button.btn.btn-default(type='button', data-dismiss='modal') Close
               button.btn.btn-primary(type='button') Save changes
@@ -69,6 +76,6 @@ block content
               button.btn.btn-primary(type='button') Save changes
 
 block scripts
-  - if(locals.user.isOwner(owner._id))
+  - if(isOwner)
     script(src='/js/es6/compiled/editProfile.js')
     script(src='/js/es6/compiled/removeGame.js')
