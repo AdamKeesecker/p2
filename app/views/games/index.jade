@@ -1,14 +1,15 @@
 extends ../shared/template
 
 block content
-  #favorites
-    include favorites
+  #containGames
+    #favorites
+      include favorites
 
-  #searchControls.well
-    input#search(type='text', placeholder='Search it dawg')
-    button#submitSearch.btn.btn-primary GOGOGOGO
+    #searchControls.well
+      input#search(type='text', placeholder='Search Games')
+      button#submitSearch.btn.btn-primary SEARCH
 
-  #results
+    #results
 
 block scripts
   script(src='/js/es6/compiled/games.js')
