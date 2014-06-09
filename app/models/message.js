@@ -44,18 +44,11 @@ class Message{
 
   static getHistoryByIds(id1, id2, fn)
   {
-    console.log('GETTING HISTORY');
     Message.getOneWayHistoryByIds(id1, id2, msgs1=>
     {
-      console.log('MSGS');
-      console.log(msgs1);
       Message.getOneWayHistoryByIds(id2, id1, msgs2=>
       {
-        console.log('MSGS');
-        console.log(msgs2);
         var messages = sortMessagesByDate(msgs1.concat(msgs2));
-        console.log('CONCATINATED');
-        console.log(messages);
         fn(messages);
       });
     });

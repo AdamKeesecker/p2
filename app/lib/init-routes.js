@@ -42,7 +42,7 @@ function load(app, fn){
   app.put('/games/add', dbg, games.add);
   app.delete('/games/remove/:gameId', dbg, games.remove);
 
-  app.get('/messages/:recipientId', dbg, messages.index);
+  app.get('/messages/:chatPartnerId', dbg, messages.index);
 
   console.log('Routes Loaded');
   fn();

@@ -1,7 +1,7 @@
 'use strict';
 
 var traceur = require('traceur');
-// var User = traceur.require(__dirname + '/../models/user.js');
+var User = traceur.require(__dirname + '/../models/user.js');
 var Message = traceur.require(__dirname + '/../models/message.js');
 // var request = require('request');
 // var multiparty = require('multiparty');
@@ -11,18 +11,21 @@ var Message = traceur.require(__dirname + '/../models/message.js');
 
 exports.index = (req, res)=>
 {
-  var senderId = res.locals.user._id;
-  var recipientId = req.params.recipientId;
+  var userId = res.locals.user._id;
+  var chatPartnerId = req.params.chatPartnerId;
 
-  console.log('SENDERID');
-  console.log(senderId);
-  console.log('RECIPIENTID');
-  console.log(recipientId);
-
-  Message.getHistoryByIds(senderId, recipientId, messages=>
+  User.findById(chatPartnerId, chatPartner=>
   {
-    console.log('MESSAGES');
-    console.log(messages);
-    res.render('messages/index', {messages: messages});
+    if(chatPartner)
+    {
+      Message.getHistoryByIds(userId, chatPartnerId, messages=>
+      {
+        res.render('messages/index', {messages: messages, chatPartner: chatPartner});
+      });
+    }
+    else
+    {
+      res.send();
+    }
   });
 };
