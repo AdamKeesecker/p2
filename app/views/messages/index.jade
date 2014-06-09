@@ -8,5 +8,6 @@
       li #{x}: #{chatPartner.username}
       li= message.body
 .modal-footer
+
   textarea#messageText(rows=1, cols=45)
-  button#sendMessage.btn.btn-primary(type='button') Send Message
+  button#sendMessage.btn.btn-primary(type='button' data-chatpartnerid=chatPartner._id.toString()) Send Message
