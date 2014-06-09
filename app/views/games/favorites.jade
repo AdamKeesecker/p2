@@ -3,7 +3,11 @@ if(locals.user)
     .div.favs.well.well-sm(data-id= game.id)
       form
         input.gameId(type= 'hidden', name= 'gameId', value= game.id)
-        //- if(locals.user.isOwner(owner._id))
+        if owner
+          if(locals.user.isOwner(owner._id))
+            button.deleteGame
+              h6#close x
+        else
           button.deleteGame
             h6#close x
       .picture(data-url= game.url)
