@@ -36,7 +36,7 @@ block content
           .modal-content
             .modal-header
               button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-              h4#myModalLabel.modal-title Title variable
+              h4#myModalLabel.modal-title Info
             .modal-body
               form
                 label User Name
@@ -70,7 +70,7 @@ block content
               h4#myModalLabel.modal-title About
             .modal-body
               form
-                textarea#modalText(name='about' rows=10, cols=89)= locals.user.about
+                textarea.modalText(name='about' rows=10, cols=44)= locals.user.about
             .modal-footer
               button.btn.btn-default(type='button', data-dismiss='modal') Close
               button.btn.btn-primary(type='button') Save changes

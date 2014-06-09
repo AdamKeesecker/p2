@@ -4,5 +4,5 @@ form.form-group
     each photo in photos
       .profilePhoto
         img#modalImg(src='/img/users/#{locals.user._id}/#{photo}' style='width: 100px; height: 80px;')
-        button.btn.btn-danger.delete-photo X
-        button.btn.btn-primary.make-profile-pic Default
+        button.btn.btn-sm.delete-photo X
+        button.btn.btn-sm.make-profile-pic Default

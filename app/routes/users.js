@@ -66,7 +66,6 @@ exports.loadDashboard = (req, res)=>{
 exports.lookup = (req, res, next)=>{
 
 	User.findById(req.session.userId, user=>{
-		if(!user){user={};}
 		res.locals.user = user;
 
 		// Message.findBySenderId(user._id, sent=>
