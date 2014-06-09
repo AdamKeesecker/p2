@@ -22,8 +22,11 @@ $(function()
     var recipientId = $(this).attr('data-recipientid');
     ajax(`/messages/${recipientId}`, 'GET', {}, h=>
     {
-      $modalContent.html(h);
-      $openModal.trigger('click');
+      if(h)
+      {
+        $modalContent.html(h);
+        $openModal.trigger('click');
+      }
     });
   }
 
