@@ -2,11 +2,23 @@
   button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
   h4#fakeLabel.modal-title Messages
 .modal-body
-  each message in messages
-    - var x = message.senderId.toString() === locals.user._id.toString() ? 'To' : 'From';
-    ul
-      li #{x}: #{chatPartner.username}
-      li= message.body
+  .well#hoorah
+    each message in messages
+      - var isLocalSender = message.senderId.toString() === locals.user._id.toString();
+      if(isLocalSender)
+        .local.well.well-sm
+          .user= locals.user.username
+          .message= message.body
+      if(!isLocalSender)
+        .sender.well.well-sm
+          .user= chatPartner.username
+          .message= message.body
+
 .modal-footer
-  textarea#messageText(rows=1, cols=45)
-  button#sendMessage.btn.btn-primary(type='button') Send Message
+  textarea#messageText(rows=1, cols=50)
+  button#sendMessage.btn.btn-primary(type='button' data-chatpartnerid=chatPartner._id.toString()) Send Message
+
+
+// message{body}
+// chatPartner
+// locals.user
