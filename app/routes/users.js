@@ -10,7 +10,9 @@ var users = global.nss.db.collection('users');
 var _ = require('lodash');
 
 exports.index = (req, res)=>{
-	res.render('users/index', {title: 'Find your p2!'});
+	users.find().toArray((e,r)=>{
+		res.render('users/index', {users: r, title: 'Find your p2!'});
+	});
 };
 
 exports.register = (req, res)=>{
