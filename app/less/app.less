@@ -122,7 +122,7 @@ html body{
   position:relative;
   .user.well{
     border: 1px groove black;
-    background-color:#202020;
+    background-color:#393939;
     background-image:none;
     color:white;
     margin-right:10px;
@@ -219,44 +219,48 @@ html body{
   }
 }
 
-#favorites{
-  .favs.well.well-sm{
+#favorites.well{
+  background-image:none;
+  background-color:#202020;
+  border:1px solid white;
+}
+.favs.well.well-sm{
+  background-image:none;
+  background-color:#393939;
+  border:1px solid black;
+  position:relative;
+  width:200px;
+  height:295px;
+  display:inline-block;
+  margin-right:10px;
+  img{
+    position:absolute;
+    width:150px;
+    height:200px;
+  }
+  .name{
+    color:white;
+    position:absolute;
+    top:210px;
+  }
+  button{
+    height:20px;
+    width:20px;
     background-image:none;
-    background-color:#202020;
-    border:1px solid black;
-    position:relative;
-    width:200px;
-    height:295px;
-    display:inline-block;
-    margin-right:10px;
-    img{
-      position:absolute;
-      width:150px;
-      height:200px;
-    }
-    .name{
+    background-color:rgba(10,10,10,.8);
+    border-radius:50%;
+    border:1px inset black;
+    position:absolute;
+    right:5px;
+    h6#close{
       color:white;
-      position:absolute;
-      top:210px;
-    }
-    button{
-      height:20px;
-      width:20px;
-      background-image:none;
-      background-color:rgba(10,10,10,.8);
-      border-radius:50%;
-      border:1px inset black;
-      position:absolute;
-      right:5px;
-      h6{
-        color:white;
-        position:relative;
-        bottom:11px;
+      position:relative;
+      bottom:11px;
 
-      }
     }
   }
 }
+
 
 #results{
   position:relative;
