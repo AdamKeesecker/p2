@@ -118,8 +118,13 @@ exports.saveGame = (req, res)=>{
 
 exports.logout = (req, res)=>
 {
-	req.session.userId = null;
-	res.redirect('/');
+	User.findById(req.session.userId, user=>{
+		user.isOnline = false;
+		users.save(user, ()=>{
+			req.session.userId = null;
+			res.redirect('/');
+		});
+	});
 };
 
 exports.editProfile = (req, res)=>
