@@ -16,7 +16,8 @@ $(function()
   var userId = $modal.attr('data-userid');
 
   $('body').on('click', '.view-chat', viewMessages);
-  $('#messageModal').on('click', '#sendMessage', sendMessage);
+  $modal.on('click', '#sendMessage', sendMessage);
+  //$('#messageText')(sendByKeyDown);
 
   function sendMessage()
   {
