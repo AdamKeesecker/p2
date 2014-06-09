@@ -64,7 +64,7 @@ block content
     #about.well
       include profile/about
     #favorites.well
-      include ../games/favorites
+      include ../users/profile/userFavs
 
 block scripts
   - if(locals.user.isOwner(owner._id))
