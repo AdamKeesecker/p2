@@ -1,9 +1,12 @@
+'use strict';
+
 var bcrypt = require('bcrypt');
 var users = global.nss.db.collection('users');
 // var Mongo = require('mongodb');
 var _ = require('lodash');
 var traceur = require('traceur');
 var Base = traceur.require(__dirname + '/base.js');
+var Message = traceur.require(__dirname + '/message.js');
 //{"name":"IloveForking","email":"phil@aol.com", "password":"7890", "gender":"male", "age":"24", "location":"02134", "orientation":"female"}
 var fssafe = traceur.require(__dirname + '/../lib/fssafe.js');
 
@@ -72,6 +75,75 @@ class User{
         }
       });
     }
+  }
+
+  getLastPerChatPartner(fn)
+  {
+    this.getPastChatPartners(partners=>
+    {
+      var lastMessages = [];
+      var messagesLeft = partners.length;
+      partners.forEach(partner=>
+      {
+        Message.getHistoryByIds(this._id, partner._id, messages=>
+        {
+          var lastMessage = messages[messages.length-1];
+          lastMessages.push(lastMessage);
+
+          if(!(--messagesLeft))
+          {
+            lastMessages = sortMessagesByDate(lastMessages);
+            var lastChats = {
+              messages: lastMessages,
+              partners: partners
+            };
+            fn(lastChats);
+          }
+        });
+      });
+    });
+  }
+
+  getAllMessages(fn)
+  {
+    Message.findBySenderId(this._id, sent=>
+    {
+      Message.findByRecipientId(this._id, received=>
+      {
+        var messages = sent.concat(received);
+        fn(messages);
+      });
+    });
+  }
+
+  getPastChatPartners(fn)
+  {
+    this.getAllMessages(messages=>
+    {
+      var partnerIds = _(messages).map(message=>
+      {
+        var isSender = message.senderId.toString() === this._id.toString();
+        if(isSender)
+        {
+          return message.recipientId;
+        }
+        return message.senderId;
+      }).map(id=>id.toString()).unique().value();
+
+      var partners = [];
+      var parntersLeft = partnerIds.length;
+      partnerIds.forEach(partnerId=>
+      {
+        User.findById(partnerId, partner=>
+        {
+          partners.push(partner);
+          if(!(--parntersLeft))
+          {
+            fn(partners);
+          }
+        });
+      });
+    });
   }
 
   setProfilePic(photo)
@@ -149,4 +221,10 @@ class User{
     Base.findById(id, users, User, func);
   }
 }
+
+function sortMessagesByDate(messages)
+{
+  return messages.sort((a,b)=>(a.date < b.date ? -1 : (a.date > b.date ? 1 : 0)));
+}
+
 module.exports = User;

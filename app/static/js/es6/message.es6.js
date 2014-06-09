@@ -7,17 +7,25 @@ $(function()
 {
   var socket;
 
-  initializeSocketIo();
-
   var $modal = $('#messageModal');
   var $modalContent = $modal.find('.modal-content');
   var $openModal = $('#openMessageModal');
 
   var userId = $modal.attr('data-userid');
 
+  initializeSocketIo();
+
   $('body').on('click', '.view-chat', viewMessages);
   $modal.on('click', '#sendMessage', sendMessage);
-  //$('#messageText')(sendByKeyDown);
+  $modal.on('keydown', '#messageText', sendByKeyDown);
+
+  function sendByKeyDown(e)
+  {
+    if(e.keyCode === 13)
+    {
+      sendMessage();
+    }
+  }
 
   function sendMessage()
   {
@@ -26,7 +34,7 @@ $(function()
     {
       var message = {
         senderId: userId,
-        recipientId: $(this).attr('data-chatpartnerid'),
+        recipientId: $('#sendMessage').attr('data-chatpartnerid'),
         body: messageText
       };
       sendMessageToServer(message);
@@ -49,6 +57,7 @@ $(function()
       if(h)
       {
         $modalContent.html(h);
+        $('#messageText').focus();
         fn();
       }
     });
@@ -79,7 +88,7 @@ $(function()
 
   function receiveMessage(msg)
   {
-    console.log(msg);
+    updateMessageHistory(msg.senderId);
   }
 
   function error(err)

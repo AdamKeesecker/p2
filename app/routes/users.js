@@ -67,17 +67,18 @@ exports.lookup = (req, res, next)=>{
 
 	User.findById(req.session.userId, user=>{
 		res.locals.user = user;
-
-		// Message.findBySenderId(user._id, sent=>
-		// {
-		// 	// res.locals.sent = sortMessagesByDate(sent);
-		// 	Message.findByRecipientId(user._id, received=>
-		// 	{
-		// 		// res.locals.received = sortMessagesByDate(received);
-		// 		res.locals.messages = sortMessagesByDate(sent.concat(received));
+		if(user)
+		{
+			user.getLastPerChatPartner(lastChats=>
+			{
+				res.locals.lastChats = lastChats;
 				next();
-		// 	});
-		// });
+			});
+		}
+		else
+		{
+			next();
+		}
 	});
 };
 

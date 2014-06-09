@@ -62,15 +62,21 @@ html
                       li
                         .row
                           .col-md-12
-                            .message-from
-                              img.from.from-pic(src='/img/default.jpg')
-                              .message-body
-                                | So I like think you're pretty cool and stuff...
-                            hr
-                            .message-from
-                              img.from.from-pic(src='/img/default.jpg')
-                              .message-body
-                                | So I like think you're pretty cool and stuff...
+                            each message, index in locals.lastChats.messages
+                              if index
+                                hr
+
+                              - var chatPartner;
+                              - locals.lastChats.partners.forEach(function(partner){
+                              -   if(partner._id.toString() === message.senderId.toString() || partner._id.toString() === message.recipientId.toString()){
+                              -     chatPartner = partner;
+                              -   }
+                              - });
+                              //- var chatPartner = locals.lastChats.partners.find(function(partner){partner._id.toString() === message.senderId.toString() || partner._id.toString() === message.recipientId.toString()});
+                              .message-from.view-chat(data-recipientid=chatPartner._id.toString())= chatPartner.username
+                                - var imgSrc = chatPartner.profilePic ? 'users/' + chatPartner._id + '/' + chatPartner.profilePic : 'default2.jpeg';
+                                img.from.from-pic(src='/img/#{imgSrc}')
+                                .message-body= message.body
 
 
                 if(!locals.user)
